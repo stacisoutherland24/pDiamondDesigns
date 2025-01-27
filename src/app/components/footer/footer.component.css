@@ -1,0 +1,9 @@
+   .footer {
+      height: 3in; /* Footer height */
+      background-color: #f8f9fa; /* Light gray background (same as navbar) */
+    }
+
+    .footer-logo {
+      height: 2.5in; /* Footer logo size */
+      max-width: 100%;
+    }

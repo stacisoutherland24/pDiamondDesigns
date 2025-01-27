@@ -1,0 +1,7 @@
+
+       .girl {
+      max-width: 100%; /* Responsive - Scale the image to fit */
+      height: auto; /* Maintain aspect ratio */
+      display: block; /* Center image horizontally */
+      margin: 0 auto; /* Center image */
+    }

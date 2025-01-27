@@ -1,0 +1,44 @@
+/* Set the height of the navbar */
+.navbar {
+  font-family: "Playfair Display", serif;
+  height: 2in; /* Set the overall height of the navbar */
+  display: flex;
+  align-items: center; /* Vertically center content */
+}
+
+/* Style the logo */
+.logo {
+  height: 1.5in; /* Set logo height to 1.5 inches */
+  max-width: auto; /* Maintain aspect ratio */
+}
+
+/* Center the navigation links */
+.nav-link {
+  font-size: 1.25rem; /* Adjust font size */
+  color: #000; /* Black color for links */
+  padding: 0 20px; /* Add spacing between links */
+}
+
+.nav-link:hover {
+  color: #007bff; /* Change link color on hover */
+}
+
+/* Style the shopping cart icon */
+.bi-cart {
+  color: #000; /* Default color for the icon */
+}
+
+.bi-cart:hover {
+  color: #007bff; /* Change color on hover */
+}
+
+/* Style the buttons */
+.btn {
+  font-size: 1rem; /* Adjust button font size */
+  padding: 0.5rem 1rem; /* Add spacing inside buttons */
+}
+   /* Custom Logo Styling */
+    .navbar-logo {
+      height: 1.5in; /* Navbar logo size */
+      max-width: 100%;
+    }
