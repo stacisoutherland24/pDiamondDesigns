@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 2in;">
      <div class="container">
-          <a routerLink="/" class="navbar-brand" >
+          <a routerLink="/" class="navbar-brand">
                <img src="assets/logo.png" alt="Logo" class="logo">
           </a>
           <div class="mx-auto">
@@ -9,19 +9,33 @@
                          <a class="nav-link" routerLink="/">Home</a>
                     </li>
                     <li class="nav-item">
-                         <a class="nav-link"  routerLink="/about">About</a>
+                         <a class="nav-link" routerLink="/about">About</a>
                     </li>
+                    <li class="nav-item">
+                         <a class="nav-link" routerLink="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" routerLink="/wholesale">Wholesale</a>
+                    </li>
+                    @if(!loggedIn)
+                    {
                     <li class="nav-item">
                          <a class="nav-link" routerLink="/registration">Registration</a>
                     </li>
+                    }
                </ul>
           </div>
           <div class="d-flex align-items-center">
                <a href="#" class="me-3">
                     <i class="bi bi-cart" style="font-size: 1.5rem;"></i>
                </a>
-               <button class="btn btn-outline-primary me-2">Login</button>
-               <button class="btn btn-outline-danger">Logout</button>
+               @if(!loggedIn)
+               {
+               <button class="btn btn-outline-primary me-2" (click)="toggleLogin()">Login</button>
+               }
+               @if(loggedIn){
+               <button class="btn btn-outline-danger" (click)="toggleLogout()">Logout</button>
+               }
           </div>
      </div>
 </nav>
