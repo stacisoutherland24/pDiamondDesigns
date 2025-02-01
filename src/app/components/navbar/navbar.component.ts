@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HomeComponent } from '../../pages/home/home.component';
+import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-navbar',
@@ -9,15 +9,16 @@ import { RouterModule } from '@angular/router';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
+  constructor(private router: Router) {}
   loggedIn = false;
 
-  toggleLogin(): void {
+  login(): void {
     this.loggedIn = true;
-    console.log('Login state:', this.loggedIn);
+    this.router.navigate(['/wholesale']);
   }
 
-  toggleLogout(): void {
-    this.loggedIn = false ;
-    console.log('Login state:', this.loggedIn);
+  logout(): void {
+    this.loggedIn = false;
+    this.router.navigate(['']);
   }
 }

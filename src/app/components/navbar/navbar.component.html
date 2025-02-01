@@ -31,10 +31,10 @@
                </a>
                @if(!loggedIn)
                {
-               <button class="btn btn-outline-primary me-2" (click)="toggleLogin()">Login</button>
+               <button class="btn btn-outline-primary me-2" (click)="login()">Login</button>
                }
                @if(loggedIn){
-               <button class="btn btn-outline-danger" (click)="toggleLogout()">Logout</button>
+               <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
                }
           </div>
      </div>
