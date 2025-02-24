@@ -1,7 +1,229 @@
+.girl {
+  max-width: 100%; /* Responsive - Scale the image to fit */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Center image horizontally */
+  margin: 0 auto; /* Center image */
+}
+.custom-blue-btn {
+  background-color: rgb(191, 110, 64); 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.custom-blue-btn:hover {
+  background-color:rgb(172, 99, 58); 
+}
 
-       .girl {
-      max-width: 100%; /* Responsive - Scale the image to fit */
-      height: auto; /* Maintain aspect ratio */
-      display: block; /* Center image horizontally */
-      margin: 0 auto; /* Center image */
-    }
+.overlay-content {
+    position: absolute;
+    top: 50%; /* Position at the center */
+    left: 50%;
+    transform: translate(-0%, -10%); /* Centering trick */
+    color: white; /* Make text stand out */
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4); /* Optional: Adds a slight background for better visibility */
+    padding: 20px;
+    border-radius: 5px;
+}
+.green-title {
+  color: rgb(31, 128, 119);
+}
+.responsive-text {
+  max-width: 60%; /* Prevents text from stretching too wide */
+  margin: 0 auto; /* Centers the text block */
+  text-align: center; /* Aligns text nicely */
+  font-size: 1.3rem; /* Adjusts font size */
+  line-height: 1.6; /* Improves readability */
+}
+.image-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows stacking on small screens */
+  justify-content: center;
+  gap: 20px; /* Adds space between images */
+  border-radius: 5px;;
+}
+
+.image-box {
+  flex: 1 1 300px; /* Flex-grow, flex-shrink, flex-basis (minimum width before stacking) */
+  max-width: 350px; /* Ensures the images don’t get too large */
+  border-radius: 5px;
+}
+
+.image-box img {
+  width: 100%; /* Ensures images are responsive */
+  height: auto;
+  display: block; /* Removes extra space under images */
+  border-radius: 5px; /* Optional: adds rounded corners */
+}
+
+.studded-hoops {
+  background: rgba(0, 0, 0, 0.1); /* Light shadow effect */
+  border-radius: 5px; /* Optional for rounded edges */
+  padding: 15px; /* Adds space around the image */
+}
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image covers the div */
+}
+.girl-Image-3 {
+  position: relative;
+  width: 80%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border-radius:5px;
+}
+.colored-div {
+  height: 60vh;
+  width: 100%;
+  background-color: rgb(191, 110, 64); /* or #bf6e40 */
+    border-radius: 5px; /* Optional for rounded edges */
+}
+.colored-div-3 {
+  height: 30vh;
+  width: 100%;
+  background-color: rgb(191, 110, 64); /* or #bf6e40 */
+    border-radius: 5px; /* Optional for rounded edges */
+}
+.colored-div-2 {
+  height: 30vh;
+  width: 100%;
+  background-color: rgb(191, 110, 64); /* or #bf6e40 */
+    border-radius: 5px; /* Optional for rounded edges */
+}
+.container {
+  max-width: 100%; /* Override Bootstrap's default max-width */
+  padding: 50;
+}
+.white-text {
+  color: white;
+}
+
+.wholesale-colored-div {
+  background-color: rgb(31, 128, 119);
+  min-height: 60vh;
+    border-radius: 5px; /* Optional for rounded edges */
+}
+.colored-div-4 {
+  background-color: rgb(31, 128, 119);
+  min-height: 100vh;
+    border-radius: 5px; /* Optional for rounded edges */
+}
+
+/* Custom styling for image */
+.custom-image {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 5px;;
+}
+
+/* Styling for the info card */
+.info-card {
+  background: white;
+  width: 420px;
+  top: 50%;
+  right: -50px;
+  transform: translateY(-50%);
+  border-radius: 5px;
+}
+
+.title {
+  font-family: "Georgia", serif;
+  color: rgb(191, 110, 64);
+}
+
+p {
+  text-align: left;
+}
+.clickable-img {
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .responsive-text {
+    max-width: 95%; /* Allows more space on small screens */
+    font-size: 1rem; /* Decreases font size for better fit */
+  }
+
+  h1.green-title {
+    font-size: 1.5rem;
+  }
+
+    h2.title {
+    font-size: 1.3rem;
+  }
+    .content {
+    padding: 20px;
+  }
+    .custom-blue-btn {
+    font-size: 14px;
+    padding: 8px 15px;
+    width: 100%; /* Makes buttons full-width */
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+  }
+
+    .custom-image,
+  .girl-Image-3 img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;;
+  }
+
+    .d-flex {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+    .info-card {
+    position: static;
+    width: 90%;
+    margin: 20px auto;
+    transform: none;
+    text-align: center;
+  }
+
+   .wholesale-colored-div {
+    min-height: auto;
+    padding: 20px;
+    border-radius: 5px;
+  }
+    /* Make images inside flexbox stack */
+  .image-container {
+    flex-direction: column;
+    gap: 15px;
+    border-radius:5px;
+  }
+
+  .image-box {
+    max-width: 100%;
+  }
+
+  /* Ensure better spacing for footer */
+  .colored-div {
+    height: auto;
+    padding: 30px 10px;
+    text-align: center;
+    border: radius 5px;
+  }
+}

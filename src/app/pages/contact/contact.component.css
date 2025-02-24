@@ -1,0 +1,54 @@
+.contact-container {
+  margin-top: 50px;
+}
+
+.contact-info {
+  color: #4A707A; /* Blue-green text color */
+}
+
+.contact-info h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.contact-info p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.contact-info a {
+  color: #4A707A;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.required {
+  font-size: 12px;
+  color: gray;
+}
+
+.form-control {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.send-btn {
+  background-color: #9C6B4F; /* Brown button */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.send-btn:hover {
+  background-color: #80553F;
+}

@@ -1,0 +1,171 @@
+.register-container {
+  background-color: rgb(31, 128, 119); /* Dark teal background */
+  padding: 20px 20px;
+  color: white;
+}
+
+.registration-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: 0 auto;
+  color: rgb(31, 128, 119);
+}
+
+.registration-form h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.registration-form p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.form-control {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.register-btn {
+  background-color:  rgb(191, 110, 64);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.register-btn:hover {
+  background-color:rgb(172, 99, 58);
+}
+
+.return-policy {
+  background:rgb(31, 128, 119);
+  padding: 30px;
+  margin-top: 50px;
+  color: white;
+  text-align: center;
+}
+
+.return-policy h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.return-policy p {
+  font-size: 16px;
+}
+
+.wholesale-colored-div {
+  background-color: rgb(31, 128, 119);
+  min-height: 40vh;
+border-radius: 5px; /* Optional for rounded edges */
+PADDING: 20px;
+}
+.wholesale-colored-div-2 {
+  background-color:rgb(172, 99, 58);
+  min-height: 100vh;
+border-radius: 5px; /* Optional for rounded edges */
+PADDING: 20px;
+}
+
+.girl-Image-3 {
+  position: relative;
+  width: 80%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border-radius:5px;
+}
+
+.custom-image {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 5px;;
+}
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+.green-title {
+  color: rgb(31, 128, 119);
+}
+
+.container {
+  max-width: 100%; /* Override Bootstrap's default max-width */
+  padding: 50;
+}
+.return-policy-container {
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 1000vh;
+  margin: 20px; /* Remove 'auto' to prevent centering */
+  font-family: 'Arial', sans-serif;
+  line-height: 1.8;
+  text-align: left; /* Ensure everything starts from the left */
+}
+
+.header-text {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.policy-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.policy-list li {
+  margin-bottom: 10px;
+}
+
+.policy-list ul {
+  list-style-type: circle;
+  padding-left: 20px;
+}
+
+a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.return-address {
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.final-policy {
+  font-weight: bold;
+  margin-top: 20px;
+}
+

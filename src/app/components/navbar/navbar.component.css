@@ -8,7 +8,7 @@
 
 /* Style the logo */
 .logo {
-  height: 1.5in; /* Set logo height to 1.5 inches */
+  height: 2in; /* Set logo height to 1.5 inches */
   max-width: auto; /* Maintain aspect ratio */
 }
 
@@ -17,6 +17,7 @@
   font-size: 1.25rem; /* Adjust font size */
   color: #000; /* Black color for links */
   padding: 0 20px; /* Add spacing between links */
+  transition: color 0.3s ease-in-out;
 }
 
 .nav-link:hover {
@@ -26,6 +27,7 @@
 /* Style the shopping cart icon */
 .bi-cart {
   color: #000; /* Default color for the icon */
+  transition: color 0.3s;
 }
 
 .bi-cart:hover {
@@ -37,8 +39,13 @@
   font-size: 1rem; /* Adjust button font size */
   padding: 0.5rem 1rem; /* Add spacing inside buttons */
 }
-   /* Custom Logo Styling */
-    .navbar-logo {
-      height: 1.5in; /* Navbar logo size */
-      max-width: 100%;
-    }
+/* Custom Logo Styling */
+.navbar-logo {
+  height: 1.5in; /* Navbar logo size */
+  max-width: 100%;
+}
+
+/* .navbar {
+    border-bottom: 1px solid #34383c;  
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+} */
