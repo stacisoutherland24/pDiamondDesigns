@@ -1,5 +1,4 @@
 .register-container {
-  background-color: rgb(31, 128, 119); /* Dark teal background */
   padding: 20px 20px;
   color: white;
 }
@@ -8,7 +7,7 @@
   background: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(100, 21, 33, 0.6);
   max-width: 800px;
   margin: 0 auto;
   color: rgb(31, 128, 119);
@@ -34,13 +33,18 @@ label {
 }
 
 .form-control {
-  border: 1px solid #ccc;
-  border-radius: 5px;
   padding: 10px;
+  transition: border-color 0.3s ease;
+}
+
+.form-glow {
+  box-shadow: 0 0 px rgba(255, 182, 193, 0.6);
+  border: 1px solid#A0AEC0;
+  border-radius: 5px;
 }
 
 .register-btn {
-  background-color:  rgb(191, 110, 64);
+  background-color: rgb(191, 110, 64);
   color: white;
   padding: 10px 20px;
   border: none;
@@ -51,11 +55,11 @@ label {
 }
 
 .register-btn:hover {
-  background-color:rgb(172, 99, 58);
+  background-color: rgb(172, 99, 58);
 }
 
 .return-policy {
-  background:rgb(31, 128, 119);
+  box-shadow: 0 0 20px rgba(100, 21, 33, 0.6);
   padding: 30px;
   margin-top: 50px;
   color: white;
@@ -72,34 +76,31 @@ label {
 }
 
 .wholesale-colored-div {
-  background-color: rgb(31, 128, 119);
   min-height: 40vh;
-border-radius: 5px; /* Optional for rounded edges */
-PADDING: 20px;
-}
-.wholesale-colored-div-2 {
-  background-color:rgb(172, 99, 58);
-  min-height: 100vh;
-border-radius: 5px; /* Optional for rounded edges */
-PADDING: 20px;
+  border-radius: 5px; /* Optional for rounded edges */
+    /* background-color: rgb(31, 128, 119); */
+  padding: 20px;
 }
 
+
 .girl-Image-3 {
+  box-shadow: 0 0 20px rgba(100, 21, 33, 0.6);
   position: relative;
   width: 80%;
   overflow: hidden;
   margin: 0;
   padding: 0;
-  border-radius:5px;
+  border-radius: 5px;
 }
 
 .custom-image {
+  box-shadow: 0 0 20px rgba(100, 21, 33, 0.6);
   margin-top: 20px;
   margin-bottom: 20px;
   width: 100%;
   max-width: 900px;
   height: auto;
-  border-radius: 5px;;
+  border-radius: 5px;
 }
 .overlay-text {
   position: absolute;
@@ -111,6 +112,7 @@ PADDING: 20px;
 }
 .green-title {
   color: rgb(31, 128, 119);
+  font-size: 3rem;
 }
 
 .container {
@@ -118,12 +120,12 @@ PADDING: 20px;
   padding: 50;
 }
 .return-policy-container {
-  color: white;
+  color: rgb(31, 128, 119);
   padding: 30px;
   border-radius: 10px;
   max-width: 1000vh;
   margin: 20px; /* Remove 'auto' to prevent centering */
-  font-family: 'Arial', sans-serif;
+  font-family: "Futura PT", "Helvetica Neue", sans-serif;
   line-height: 1.8;
   text-align: left; /* Ensure everything starts from the left */
 }
@@ -168,4 +170,6 @@ a:hover {
   font-weight: bold;
   margin-top: 20px;
 }
-
+.img {
+  box-shadow: 0 0 20px rgba(100, 21, 33, 0.6);
+}

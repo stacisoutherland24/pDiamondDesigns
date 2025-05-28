@@ -1,0 +1,7 @@
+ <form [formGroup]="stripeTest"> 
+     <input type="text" formControlName="name" placeholder="Cardholder name" />
+     <ngx-stripe-card></ngx-stripe-card>
+     <button type="submit">Pay</button>
+</form>
+
+<!-- (ngSubmit)="pay()" -->

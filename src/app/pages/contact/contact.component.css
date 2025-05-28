@@ -3,21 +3,23 @@
 }
 
 .contact-info {
-  color: #4A707A; /* Blue-green text color */
+  color: rgb(31, 128, 119);
 }
 
 .contact-info h2 {
-  font-size: 24px;
+  font-size: 30px;
   margin-bottom: 15px;
 }
 
 .contact-info p {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.8;
+    color: #333;
+
 }
 
 .contact-info a {
-  color: #4A707A;
+  color: #333;
   text-decoration: none;
 }
 
@@ -27,28 +29,39 @@
 
 .form-group {
   margin-bottom: 20px;
+
+  color: rgb(31, 128, 119);
 }
 
 .required {
-  font-size: 12px;
-  color: gray;
+  font-size: 15px;
+  color: rgb(31, 128, 119);
 }
 
 .form-control {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
-.send-btn {
-  background-color: #9C6B4F; /* Brown button */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
+.form-glow {
+    box-shadow: 0 0 px rgba(255, 182, 193, 0.6); 
+    border: 1px solid#A0AEC0;
+    border-radius: 5px;
 }
 
-.send-btn:hover {
-  background-color: #80553F;
+.custom-btn {
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(to right, #a55728, #bf6e40);
+ color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+.custom-btn:hover {
+  background: linear-gradient(to right, #a55728, #8d512f);
+  transform: translateY(-2px);
+   background: linear-gradient(to right, #bf6e40, #a55728);
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }

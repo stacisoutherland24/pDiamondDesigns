@@ -1,0 +1,12 @@
+<div class="product-landing">
+     <h1>{{ product.title }}</h1>
+     <img [src]="product.images[0]?.url" alt="{{ product.title }}" class="product-image" />
+     <p>{{ product.description }}</p>
+     <p class="price">Price: ${{ product.price }}</p>
+
+     <button (click)="addToCart()">Add to Cart</button>
+
+     <div *ngIf="addedMessage" class="added-message">
+          {{ addedMessage }}
+     </div>
+</div>

@@ -1,77 +1,127 @@
 <div class="content py-5">
      <div class="container text-center">
-          <h1 class="green-title">WHOLESALE REGISTRATION</h1>
-          <BR>
+          <br>
 
+
+<h1 class="green-title">Registration</h1>
+<hr style="margin: 2rem 0; border: none; border-top: 2px solid #ccc;">
           <div class="wholesale-colored-div">
                <div class="container d-flex justify-content-center align-items-center">
                     <div class="position-relative">
-                         <img src="assets/girlImage4.png" alt="Banner Image" class="girl-Image-3 custom-image">
+                         <img src="assets/girlImage4.png" alt="Banner Image" class="girl-Image-3 img custom-image">
 
 
 
 
                     </div>
+                    
                </div>
+               <br>
                <div class="container register-container wholesale-colored-div">
                     <!-- Registration Section -->
                     <div class="registration-form">
-                         <h2 class="text-center">Register</h2>
-                         <p class="text-center">
+                         <h1 class="text-center">Register Here</h1>
+                         <h5 class="text-center">
                               Please fill out the required information below and I will review your information. Once
                               you have been approved, I will
                               send you the login credentials. I am so excited to create a mutually beneficial
                               relationship with you!
-                         </p>
+                         </h5>
 
                          <form>
 
                               <div class="row">
                                    <div class="col-md-5">
-                                        <label for="firstName" class="text-start d-block">First Name</label>
-                                        <input type="text" id="firstName" class="form-control" placeholder="First Name"
-                                             required>
+                                        <div class="form-group">
+                                             <label for="firstName" class="text-start d-block">First Name</label>
+                                             <div class="input-group form-glow">
+                                                  <span class="input-group-text ">
+                                                       <i class="bi bi-person"></i>
+                                                  </span>
+                                                  <input type="text" id="firstName" class="form-control"
+                                                       placeholder="First Name" required>
+                                             </div>
+                                        </div>
                                    </div>
                                    <div class="col-md-7">
-                                        <label for="lastName" class="text-start d-block">Last Name</label>
-                                        <input type="text" id="lastName" class="form-control" placeholder="Last Name">
+                                        <div class="form-group">
+                                             <label for="lastName" class="text-start d-block">Last Name</label>
+                                             <div class="input-group form-glow">
+                                                  <span class="input-group-text ">
+                                                       <i class="bi bi-person"></i>
+                                                  </span>
+                                                  <input type="text" id="lastName" class="form-control"
+                                                       placeholder="Last Name">
+                                             </div>
+                                        </div>
                                    </div>
 
                               </div>
 
                               <div class="form-group">
                                    <label for="email" class="text-start d-block">Email</label>
-                                   <input type="email" id="email" class="form-control" placeholder="Enter your email"
-                                        required>
+                                   <div class="input-group form-glow">
+                                        <span class="input-group-text">
+                                             <i class="bi bi-envelope"></i>
+                                        </span>
+                                        <input type="email" id="email" class="form-control"
+                                             placeholder="Enter your email" required>
+                                   </div>
                               </div>
 
                               <div class="form-group">
                                    <label for="password" class="text-start d-block">Password</label>
-                                   <input type="password" id="password" class="form-control"
-                                        placeholder="Enter password" required>
+                                   <div class="input-group form-glow">
+                                        <span class="input-group-text">
+                                             <i class="bi bi-lock"></i>
+                                        </span>
+                                        <input type="password" id="password" class="form-control"
+                                             placeholder="Enter password" required>
+                                   </div>
                               </div>
 
                               <div class="form-group">
-                                   <label for="password" class="text-start d-block">Phone</label>
-                                   <input type="password" id="phone" class="form-control" placeholder="Enter password"
-                                        required>
+                                   <label for="phone" class="text-start d-block">Phone</label>
+                                   <div class="input-group form-glow">
+                                        <span class="input-group-text border-end-0">
+                                             <i class="bi bi-telephone" style="font-size: 1.2rem;"></i>
+                                        </span>
+                                        <input type="tel" id="phone" class="form-control border-start-0"
+                                             placeholder="Enter phone number" required>
+                                   </div>
                               </div>
 
                               <div class="form-group">
                                    <label for="storeName" class="text-start d-block">Store Name</label>
+                                   <div class="input-group form-glow">
+                                   <span class="input-group-text border-end-0">
+                                        <i class="bi bi-shop" style="font-size: 1.2rem;"></i>
+                                   </span>
+                               
                                    <input type="text" id="storeName" class="form-control" placeholder="Your Store Name"
                                         required>
+                                        </div>
                               </div>
 
                               <div class="form-group">
                                    <label for="address" class="text-start d-block">Store Address</label>
-
+                                   <div class="input-group form-glow">
+                                        <span class="input-group-text border-end-0">
+                                             <i class="bi bi-shop" style="font-size: 1.2rem;"></i>
+                                        </span>
+                                   <input type="text" id="storeAddress" class="form-control"
+                                        placeholder="Your Store Address" required>
+                                        </div>
                               </div>
 
                               <div class="form-group">
                                    <label for="country" class="text-start d-block">Select Country (required)</label>
+                                   <div class="input-group form-glow">
+                                        <span class="input-group-text border-end-0">
+                                             <i class="bi bi-globe" style="font-size: 1.2rem;"></i>
+                                        </span>
                                    <select id="country" class="form-control">
-                                        <option value="">Select a country</option>
+                                        <option value="" disabled selected>Select a country</option>
                                         <option value="US">United States</option>
                                         <option value="CA">Canada</option>
                                         <option value="MX">Mexico</option>
@@ -86,65 +136,160 @@
                                         <option value="ZA">South Africa</option>
                                    </select>
                               </div>
+                              </div>
 
                               <div class="form-group">
                                    <label for="storeName" class="text-start d-block">Address Line 1</label>
+                                   <div class="input-group form-glow">
+                                        <span class="input-group-text border-end-0">
+                                             <i class="bi bi-geo-alt" style="font-size: 1.2rem;"></i>
+                                        </span>
                                    <input type="text" id="storeName" class="form-control" placeholder="Address Line 1"
                                         required>
-                              </div>
+                              </div></div>
 
                               <div class="form-group">
                                    <label for="storeName" class="text-start d-block">Address Line 2</label>
+                                   <div class="input-group form-glow">
+                                        <span class="input-group-text border-end-0">
+                                             <i class="bi bi-geo-alt" style="font-size: 1.2rem;"></i>
+                                        </span>
                                    <input type="text" id="storeName" class="form-control" placeholder="Address Line 2"
                                         required>
-                              </div>
+                              </div></div>
                               <div class="row">
                                    <div class="col-md-4">
                                         <label for="storeName" class="text-start d-block">City</label>
+                                        <div class="input-group form-glow">
+                                             <span class="input-group-text border-end-0">
+                                                  <i class="bi bi-geo-alt" style="font-size: 1.2rem;"></i>
+                                             </span>
                                         <input type="text" id="storeName" class="form-control" placeholder="City"
                                              required>
+                                   </div></div>
+
+                              <div class="col-md-4">
+                                   <label for="state" class="text-start d-block">State</label>
+                                   <div class="input-group form-glow">
+                                        <span class="input-group-text border-end-0">
+                                             <i class="bi bi-flag" style="font-size: 1.2rem;"></i>
+                                        </span>
+                                        <select id="state" class="form-control" required>
+                                             <option value="" disabled selected>Select a state</option>
+                                             <option value="al">Alabama</option>
+                                             <option value="ak">Alaska</option>
+                                             <option value="az">Arizona</option>
+                                             <option value="ar">Arkansas</option>
+                                             <option value="ca">California</option>
+                                             <option value="co">Colorado</option>
+                                             <option value="ct">Connecticut</option>
+                                             <option value="de">Delaware</option>
+                                             <option value="fl">Florida</option>
+                                             <option value="ga">Georgia</option>
+                                             <option value="hi">Hawaii</option>
+                                             <option value="id">Idaho</option>
+                                             <option value="il">Illinois</option>
+                                             <option value="in">Indiana</option>
+                                             <option value="ia">Iowa</option>
+                                             <option value="ks">Kansas</option>
+                                             <option value="ky">Kentucky</option>
+                                             <option value="la">Louisiana</option>
+                                             <option value="me">Maine</option>
+                                             <option value="md">Maryland</option>
+                                             <option value="ma">Massachusetts</option>
+                                             <option value="mi">Michigan</option>
+                                             <option value="mn">Minnesota</option>
+                                             <option value="ms">Mississippi</option>
+                                             <option value="mo">Missouri</option>
+                                             <option value="mt">Montana</option>
+                                             <option value="ne">Nebraska</option>
+                                             <option value="nv">Nevada</option>
+                                             <option value="nh">New Hampshire</option>
+                                             <option value="nj">New Jersey</option>
+                                             <option value="nm">New Mexico</option>
+                                             <option value="ny">New York</option>
+                                             <option value="nc">North Carolina</option>
+                                             <option value="nd">North Dakota</option>
+                                             <option value="oh">Ohio</option>
+                                             <option value="ok">Oklahoma</option>
+                                             <option value="or">Oregon</option>
+                                             <option value="pa">Pennsylvania</option>
+                                             <option value="ri">Rhode Island</option>
+                                             <option value="sc">South Carolina</option>
+                                             <option value="sd">South Dakota</option>
+                                             <option value="tn">Tennessee</option>
+                                             <option value="tx">Texas</option>
+                                             <option value="ut">Utah</option>
+                                             <option value="vt">Vermont</option>
+                                             <option value="va">Virginia</option>
+                                             <option value="wa">Washington</option>
+                                             <option value="wv">West Virginia</option>
+                                             <option value="wi">Wisconsin</option>
+                                             <option value="wy">Wyoming</option>
+                                        </select>
                                    </div>
+                              </div>
 
                                    <div class="col-md-4">
-                                        <label for="storeName" class="text-start d-block">State</label>
-                                        <input type="text" id="storeName" class="form-control" placeholder="State"
-                                             required>
-                                   </div>
-                                   <div class="col-md-4">
                                         <label for="storeName" class="text-start d-block">Zip Code</label>
+                                             <div class="input-group form-glow">
+                                                  <span class="input-group-text border-end-0">
+                                                       <i class="bi bi-geo-alt" style="font-size: 1.2rem;"></i>
+                                                  </span>
                                         <input type="text" id="storeName" class="form-control" placeholder="Zip Code"
                                              required>
-                                   </div>
+                                   </div></div>
                               </div>
                               <br>
 
                               <div class="form-group">
                                    <label for="instagram" class="text-start d-block">Store Website</label>
+                                   <div class="input-group form-glow">
+                                        <span class="input-group-text border-end-0">
+                                             <i class="bi bi-link-45deg" style="font-size: 1.2rem;"></i>
+                                        </span>
                                    <input type="text" id="instagram" class="form-control" placeholder="http://">
-                              </div>
+                              </div></div>
 
                               <div class="form-group">
-                                   <label for="instagram" class="text-start d-block">Sales Tax ID or Resesller Number</label>
-                                   <label>Additionally, please email us your State Sales Tax Certificate. Applications without a valid Sales Tax or Reseller Certificate Will not be considered.</label>
+                                   <label for="instagram" class="text-start d-block">Sales Tax ID or Resesller
+                                        Number. Additionally, please email us your State Sales Tax Certificate. Applications
+                                        without a valid Sales Tax or Reseller Certificate will not be
+                                        considered.</label>
+                                        <div class="input-group form-glow">
+                                             <span class="input-group-text border-end-0">
+                                                  <i class="bi bi-person-vcard" style="font-size: 1.2rem;"></i>
+                                             </span>
                                    <input type="text" id="instagram" class="form-control" placeholder="http://">
-                              </div>
+                              </div></div>
 
                               <div class="form-group">
                                    <label for="instagram" class="text-start d-block">Store Facebook Account</label>
-                                   <input type="text" id="instagram" class="form-control"
-                                        placeholder="http://">
-                              </div>
+                                   <div class="input-group form-glow">
+                                        <span class="input-group-text border-end-0">
+                                             <i class="bi bi-facebook me-2 icon-light" style="font-size: 1.2rem; "></i>
+                                        </span>
+                                   <input type="text" id="instagram" class="form-control" placeholder="http://">
+                              </div></div>
 
                               <div class="form-group">
-                                   <label for="instagram" class="text-start d-block">Store Instagram Account</label>
-                                   <label for="instagram" class="text-start d-block">Please add Instagram Account if you do not have a Facebook Page for your store, thank you</label>
-                                   <input type="text" id="instagram" class="form-control"
-                                        placeholder="http://">
-                              </div>
+                                   <label for="instagram" class="text-start d-block">Store Instagram Account</label><label for="instagram" class="text-start d-block">Please add Instagram Account if you
+                                        do not have a Facebook Page for your store, thank you</label>
+                                   <div class="input-group form-glow">
+                                        <span class="input-group-text border-end-0">
+                                             <i class="bi bi-instagram me-2 icon-light" style="font-size: 1.2rem; "></i>
+                                        </span>
+                                 
+                                   <input type="text" id="instagram" class="form-control" placeholder="http://">
+                              </div></div>
 
                               <div class="form-group">
                                    <label for="heardAboutUs" class="text-start d-block">How did you hear about us?
                                         (required)</label>
+                                             <div class="input-group form-glow">
+                                                  <span class="input-group-text border-end-0">
+                                                       <i class="bi bi-chat-dots me-2 icon-light" style="font-size: 1.2rem; "></i>
+                                                  </span>
                                    <select id="heardAboutUs" class="form-control">
                                         <option value="">Select an option</option>
                                         <option value="facebook">Facebook</option>
@@ -154,7 +299,7 @@
                                         <option value="friend">Friend</option>
                                         <option value="other">Other</option>
                                    </select>
-                              </div>
+                              </div></div>
 
                               <button type="submit" class="btn register-btn">Submit</button>
                          </form>

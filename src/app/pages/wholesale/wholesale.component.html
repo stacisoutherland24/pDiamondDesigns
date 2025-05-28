@@ -1,2 +1,33 @@
-<p>wholesale works!</p>
-<img src="assets/jewelry1.jpg" alt="ring" style="width: 200px; cursor: pointer" (click)="redirectToStripe()" />
+
+<!-- <img src="assets/jewelry1.jpg" alt="ring" style="width: 200px; cursor: pointer" (click)="redirectToStripe()" /> -->
+<br><br><br><br><br>
+<!-- <app-product-landing [product]="featuredProduct"></app-product-landing> -->
+ <h1 class="green-title"> P Diamond Designs</h1>
+<div class="category-links">
+     <a *ngFor="let cat of categories" href="#" (click)="filterByCategory(cat.value); $event.preventDefault()"
+          [class.active]="selectedCategory === cat.value">
+          {{ cat.label }}
+     </a>
+</div>
+<hr style="margin: 2rem 0; border: none; border-top: 2px solid #ccc;">
+<div class="product-grid">
+     <div class="product-card" *ngFor="let product of filteredProducts">
+
+          <div class="product-image-wrapper">
+               <img class="product-image" [src]="product.images[0]?.asset.url" alt="{{ product.title }}" />
+          </div>
+
+          <div class="product-content">
+               <h3 class="product-title">{{ product.title }}</h3>
+               <p class="product-description">{{ product.description || 'No description available.' }}</p>
+          </div>
+
+          <div class="product-footer">
+               <p class="product-price">${{ product.price }}</p>
+               <button class="add-to-cart-btn">
+                    <i class="bi bi-cart-plus"></i> Add to Cart
+               </button>
+          </div>
+
+     </div>
+</div>

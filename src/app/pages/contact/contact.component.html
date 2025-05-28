@@ -1,7 +1,7 @@
 <div class="container contact-container">
      <div class="row">
           <!-- Left Contact Info Section -->
-          <div class="col-md-5 contact-info">
+          <div class="col-md-4 contact-info">
                <h2>Contact us</h2>
                <p><a href="mailto:kerry&#64;pdiamonddesigns.com">kerry&#64;pdiamonddesigns.com</a></p>
                <p>(817) 319-9068</p>
@@ -9,32 +9,64 @@
           </div>
 
           <!-- Right Form Section -->
-          <div class="col-md-7">
+          <div class="col-md-8">
                <form>
-                    <div class="form-group">
-                         <label for="firstName">Name <span class="required">(required)</span></label>
                          <div class="row">
-                              <div class="col-md-6">
-                                   <input type="text" id="firstName" class="form-control" placeholder="First Name"
-                                        required>
+                              <div class="col-md-5">
+                                   <div class="form-group">
+                                        <label for="firstName" class="text-start d-block">First Name</label>
+                                        <div class="input-group form-glow">
+                                             <span class="input-group-text ">
+                                                  <i class="bi bi-person"></i>
+                                             </span>
+                                             <input type="text" id="firstName" class="form-control" placeholder="First Name" required>
+                                        </div>
+                                   </div>
                               </div>
-                              <div class="col-md-6">
-                                   <input type="text" id="lastName" class="form-control" placeholder="Last Name">
+                              <div class="col-md-7">
+                                   <div class="form-group">
+                                        <label for="lastName" class="text-start d-block">Last Name</label>
+                                        <div class="input-group form-glow">
+                                             <span class="input-group-text ">
+                                                  <i class="bi bi-person"></i>
+                                             </span>
+                                             <input type="text" id="lastName" class="form-control" placeholder="Last Name">
+                                        </div>
+                                   </div>
+                              </div>
+                         
+                         </div>
+                         
+                         <div class="form-group">
+                              <label for="email" class="text-start d-block">Email</label>
+                              <div class="input-group form-glow">
+                                   <span class="input-group-text">
+                                        <i class="bi bi-envelope"></i>
+                                   </span>
+                                   <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
                               </div>
                          </div>
-                    </div>
+                         
+                         <div class="form-group">
+                              <label for="password" class="text-start d-block">Password</label>
+                              <div class="input-group  form-glow">
+                                   <span class="input-group-text">
+                                        <i class="bi bi-lock"></i>
+                                   </span>
+                                   <input type="password" id="password" class="form-control" placeholder="Enter password" required>
+                              </div>
+                         </div>
+                
+
 
                     <div class="form-group">
-                         <label for="email">Email <span class="required">(required)</span></label>
-                         <input type="email" id="email" class="form-control" placeholder="Email" required>
+                         <label for="message">Message </label>
+                         <textarea id="message" class="form-control" rows="8" placeholder="Please write your message here." required></textarea>
                     </div>
-
-                    <div class="form-group">
-                         <label for="message">Message <span class="required">(required)</span></label>
-                         <textarea id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn send-btn">Send</button>
+<br><a class="btn custom-btn">Send Message</a>
+                    <br>
+                    <br>
+                    <br>
                </form>
           </div>
      </div>
