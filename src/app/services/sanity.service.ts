@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { createClient } from '@sanity/client';
+import { Observable, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +13,27 @@ export class SanityService {
     apiVersion: '2023-01-01',
   });
 
-  getProducts() {
-    return this.client.fetch(
-         '*[_type == "product"]{title, price, type, description, images[]{asset->{url}}}'
-    );
+  getProducts(): Observable<any[]> {
+    const query =
+      '*[_type == "product"]{_id, title, price, type, description, images[]{asset->{url}}}';
+    return from(this.client.fetch(query));
+  }
+
+
+  getProduct(productId: string): Observable<any> {
+    const query = `*[_type == "product" && _id == "${productId}"][0]{
+      _id,
+      title,
+      price,
+      type,
+      description,
+      images[]{
+        asset->{
+          _id,
+          url
+        }
+      }
+    }`;
+    return from(this.client.fetch(query));
   }
 }

@@ -9,14 +9,81 @@
   }
 }
 
-/* buttons */
+/* Buttons */
+.custom-btn {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(to right, #a55728, #bf6e40);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-btn:hover {
+  background-color: rgb(172, 99, 58);
+  transform: translateY(-2px);
+}
+
+/* Brand Title */
+.brand-title {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  color: #2b2b2b;
+  margin: 40px 0;
+}
+
+.brand-title .main {
+  font-size: 3rem;
+  letter-spacing: 0.15rem;
+  font-weight: 500;
+}
+
+.brand-title .sub {
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+  font-weight: 400;
+  color: #2b2b2b;
+}
+
+/* Green Title */
+.green-title {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  animation: fadeInUp 1s ease both;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #1f8077, #60c6b1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Ethereal';
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+/* Responsive Text */
+.responsive-text {
+  max-width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Showroom Section */
 .showroom-section {
-     box-shadow: 0 0 10px rgba(100, 21, 33, 0.6); 
-  background-color: #f5f5f5; /* lighter neutral or off-white */
+  box-shadow: 0 0 10px rgba(100, 21, 33, 0.6);
+  background-color: #f5f5f5;
   padding: 3rem 2rem;
   text-align: center;
   border-radius: 12px;
-
   max-width: 50%;
   margin: 3rem auto;
 }
@@ -34,7 +101,6 @@
   margin: 1rem auto;
 }
 
-
 .showroom-text {
   font-size: 1.25rem;
   font-family: "Futura PT", "Helvetica Neue", sans-serif;
@@ -44,256 +110,96 @@
   margin: 0 auto;
 }
 
-.custom-btn {
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  background: linear-gradient(to right, #a55728, #bf6e40);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 14px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.custom-btn:hover {
-  background-color:rgb(172, 99, 58); 
-    transform: translateY(-2px); /* Subtle lift on hover */
-}
-
-/* text */
-
-.title {
-  font-family: "Georgia", serif;
-  color: rgb(191, 110, 64);
-  
-}
-
-p {
-
-  text-align: center;
-    font-family: 'Futura PT', 'Helvetica Neue', sans-serif;
-
-}
-
-
-
-
-.green-title {
-    opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  animation: fadeInUp 1s ease both;
-  letter-spacing: 1px;
-line-height: 1.4;
-margin-bottom: 2rem;
-  background: linear-gradient(to right, #1f8077, #60c6b1);
--webkit-background-clip: text;
-background-clip: text;
--webkit-text-fill-color: transparent;
-font-family: 'Ethereal';
-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  color: rgb(31, 128, 119);
-  font-size: 2.5rem;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  text-align: center;
-  position: relative;
-}
-.responsive-text {
-  max-width: 60%; /* Prevents text from stretching too wide */
-  margin: 0 auto; /* Centers the text block */
-  text-align: center; /* Aligns text nicely */
-  font-size: 1.3rem; /* Adjusts font size */
-  line-height: 1.6; /* Improves readability */
-  color: #333;
-  
-}
-
-
-/* images */
-
-
-
+/* Images */
 .custom-image {
-      box-shadow: 0 0 20px rgba(100, 21, 33, 0.6); 
-  margin-top: 20px;
-  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(100, 21, 33, 0.6);
+  margin: 20px 0;
   width: 100%;
   max-width: 900px;
   height: auto;
-  border-radius: 5px;;
-}
-
-.girl {
-  max-width: 100%; /* Responsive - Scale the image to fit */
-  height: auto; /* Maintain aspect ratio */
-  display: block; /* Center image horizontally */
-  margin: 0 auto; /* Center image */
+  border-radius: 5px;
 }
 
 .image-container {
   display: flex;
-  flex-wrap: wrap; /* Allows stacking on small screens */
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px; /* Adds space between images */
-  border-radius: 5px;;
+  gap: 20px;
+  border-radius: 5px;
 }
 
 .image-box {
-  flex: 1 1 400px; /* Flex-grow, flex-shrink, flex-basis (minimum width before stacking) */
-  max-width: 600px; /* Ensures the images don’t get too large */
+  flex: 1 1 400px;
+  max-width: 600px;
   border-radius: 5px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .image-box img {
-  width: 100%; /* Ensures images are responsive */
+  width: 100%;
   height: auto;
-  display: block; /* Removes extra space under images */
-  border-radius: 5px; /* Optional: adds rounded corners */
+  display: block;
+  border-radius: 5px;
 }
 
 .studded-hoops {
-  background: rgba(0, 0, 0, 0.1); /* Light shadow effect */
-  border-radius: 5px; /* Optional for rounded edges */
-  padding: 15px; /* Adds space around the image */
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 15px;
 }
 
-.girl-Image-3 {
-  position: relative;
-  width: 80%;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  border-radius:5px;
-}
-
-/* colored divs */
-
-.colored-div {
-  height: 60vh;
-  width: 100%;
-  background: linear-gradient(to bottom, #bf6e40, #a55728);
-
-    border-radius: 5px; /* Optional for rounded edges */
-}
-
-
-
-
+/* Colored Div */
 .wholesale-colored-div {
-
-
-    border-radius: 5px; /* Optional for rounded edges */
+  border-radius: 5px;
 }
 
-/* info card */
-.info-card {
-  background-color: #f5f5f5; /* same as showroom-section */
-  box-shadow: 0 0 10px rgba(100, 21, 33, 0.6); /* same shadow */
-  width: 60%;
-  padding: 2rem;
-  border-radius: 12px;
-  text-align: center;
+/* Animations */
+.green-title.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-
-
-
+/* Responsive */
 @media (max-width: 768px) {
-    .showroom-section {
+  .showroom-section {
     max-width: 95%;
     padding: 1.5rem 1rem;
   }
-    .green-title {
+
+  .green-title {
     font-size: 1.6rem;
-    line-height: 1.3;
   }
+
   .responsive-text {
-    max-width: 95%; /* Allows more space on small screens */
-    font-size: 1rem; /* Decreases font size for better fit */
+    max-width: 95%;
+    font-size: 1rem;
   }
 
-  h1.green-title {
-    font-size: 1.5rem;
-  }
-
-    h2.title {
-    font-size: 1.3rem;
-  }
-    .content {
-    padding: 20px;
-  }
-    .custom-blue-btn {
-    font-size: 14px;
-    padding: 8px 15px;
-    width: 100%; /* Makes buttons full-width */
-    text-align: center;
-    display: block;
-    margin: 10px auto;
-  }
-
-    .custom-image,
-  .girl-Image-3 img {
+  .custom-image {
     max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 5px;
   }
-  
 
-    .d-flex {
+  .d-flex {
     flex-direction: column;
     align-items: center;
-    text-align: center;
   }
-  .info-card {
 
-    width: 95% !important;
-    margin: 20px auto;
-
-
-    text-align: center;
-    box-shadow: 0 0 10px rgba(100, 21, 33, 0.3); /* slightly lighter shadow for mobile */
-  }
   .position-relative {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-   .wholesale-colored-div {
-    
-    min-height: auto;
-    padding: 20px;
-    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-    /* Make images inside flexbox stack */
+
+  .wholesale-colored-div {
+    padding: 20px;
+  }
+
   .image-container {
     flex-direction: column;
     gap: 15px;
-    border-radius:5px;
   }
 
   .image-box {
     max-width: 100%;
   }
-
-  /* Ensure better spacing for footer */
-  .colored-div {
-    height: auto;
-    padding: 30px 10px;
-    text-align: center;
-    border: radius 5px;
-  }
-}
-
-
-.green-title.animate {
-  opacity: 1;
-  transform: translateY(0);
-
 }

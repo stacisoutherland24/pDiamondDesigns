@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { SanityService } from '../../services/sanity.service';
 import { CommonModule } from '@angular/common';
-import { ProductLandingComponent } from '../../components/product-landing/product-landing.component';
+import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-wholesale',
   standalone: true,
-  imports: [CommonModule, ProductLandingComponent],
+  imports: [CommonModule, RouterModule],
   templateUrl: './wholesale.component.html',
   styleUrl: './wholesale.component.css',
 })
@@ -30,22 +31,23 @@ export class WholesaleComponent implements OnInit {
     { label: 'Necklaces', value: 'necklace' },
   ];
 
-  constructor(private sanityService: SanityService) {}
+  constructor(private sanityService: SanityService, private router: Router) {}
 
   ngOnInit(): void {
-    this.sanityService.getProducts().then((data) => {
-      this.products = data;
-      this.filteredProducts = data; // Initially show all
-      console.log(
-        'Types:',
-        this.products.map((p) => p.type)
-      );
-      console.log(
-        'Loaded types:',
-        this.products.map((p) => p.type)
-      );
-      console.log('Raw data:', data);
+    this.sanityService.getProducts().subscribe({
+      next: (products) => {
+        this.products = products;
+        this.filteredProducts = products;
+        console.log('Loaded products:', products); // For debugging
+      },
+      error: (error) => {
+        console.error('Error loading products:', error);
+      },
     });
+  }
+  navigateToProduct(productId: string): void {
+    console.log('Navigating to product:', productId); // For debugging
+    this.router.navigate(['/product', productId]);
   }
 
   filterByCategory(category: string): void {
@@ -57,6 +59,19 @@ export class WholesaleComponent implements OnInit {
         (product) => product.type?.toLowerCase() === category.toLowerCase()
       );
     }
+  }
+
+  addToCart(product: any, event?: Event): void {
+    // Prevent navigation when clicking add to cart button
+    if (event) {
+      event.stopPropagation();
+    }
+
+    console.log('Adding to cart from grid:', product);
+
+    // TODO: Implement your cart logic here
+    // For now, just show an alert
+    alert(`Added ${product.title} to cart!`);
   }
 
   // redirectToStripe() {

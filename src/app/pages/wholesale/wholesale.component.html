@@ -1,33 +1,43 @@
-
-<!-- <img src="assets/jewelry1.jpg" alt="ring" style="width: 200px; cursor: pointer" (click)="redirectToStripe()" /> -->
+<!-- Replace your existing product grid section with this -->
 <br><br><br><br><br>
-<!-- <app-product-landing [product]="featuredProduct"></app-product-landing> -->
- <h1 class="green-title"> P Diamond Designs</h1>
+
+<h1 class="green-title">P Diamond Designs</h1>
+
 <div class="category-links">
      <a *ngFor="let cat of categories" href="#" (click)="filterByCategory(cat.value); $event.preventDefault()"
           [class.active]="selectedCategory === cat.value">
           {{ cat.label }}
      </a>
 </div>
+
 <hr style="margin: 2rem 0; border: none; border-top: 2px solid #ccc;">
+
 <div class="product-grid">
      <div class="product-card" *ngFor="let product of filteredProducts">
-
-          <div class="product-image-wrapper">
-               <img class="product-image" [src]="product.images[0]?.asset.url" alt="{{ product.title }}" />
+          <!-- Make image clickable to navigate to detail -->
+          <div class="product-image-wrapper" (click)="navigateToProduct(product._id)">
+               <img class="product-image" [src]="product.images?.[0]?.asset?.url" [alt]="product.title"
+                    onerror="this.src='assets/placeholder-image.jpg'" />
           </div>
 
-          <div class="product-content">
+          <!-- Make content clickable to navigate to detail -->
+          <div class="product-content" (click)="navigateToProduct(product._id)">
                <h3 class="product-title">{{ product.title }}</h3>
                <p class="product-description">{{ product.description || 'No description available.' }}</p>
           </div>
 
           <div class="product-footer">
                <p class="product-price">${{ product.price }}</p>
-               <button class="add-to-cart-btn">
+               <!-- Add event.stopPropagation() to prevent navigation when clicking add to cart -->
+               <button class="add-to-cart-btn" (click)="addToCart(product, $event)">
                     <i class="bi bi-cart-plus"></i> Add to Cart
                </button>
           </div>
-
      </div>
 </div>
+
+<p class="disclaimer-text">
+     *Disclaimer — Prices on products are subject to change due to the rising market costs of
+     product materials. If you have any questions or concerns regarding pricing, please contact me.
+     Thank you for understanding.
+</p>
