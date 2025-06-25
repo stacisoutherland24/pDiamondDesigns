@@ -1,43 +1,96 @@
-<!-- Replace your existing product grid section with this -->
-<br><br><br><br><br>
+<div class="password-overlay" *ngIf="!isAuthenticated">
+     <div class="password-container">
+          <div class="password-content">
+               <!-- Elegant Logo/Badge -->
+               <div class="elegant-badge">
+                    <img src="assets/logo.png" alt="Wholesale Badge" class="badge-image">
+               </div>
 
-<h1 class="green-title">P Diamond Designs</h1>
+               <h2 class="password-title">P DIAMOND DESIGNS</h2>
+               <p class="password-subtitle">Exclusive dealer portal</p>
 
-<div class="category-links">
-     <a *ngFor="let cat of categories" href="#" (click)="filterByCategory(cat.value); $event.preventDefault()"
-          [class.active]="selectedCategory === cat.value">
-          {{ cat.label }}
-     </a>
-</div>
+               <form (ngSubmit)="checkPassword()" class="password-form">
+                    <div class="input-group">
+                         <input type="password" [(ngModel)]="passwordInput" name="password"
+                              placeholder="Enter access code" class="password-input" [class.error]="showError"
+                              autocomplete="off">
+                         <div class="input-underline"></div>
+                    </div>
 
-<hr style="margin: 2rem 0; border: none; border-top: 2px solid #ccc;">
+                    <div class="error-message" *ngIf="showError">
+                         Invalid access code. Please try again.
+                    </div>
 
-<div class="product-grid">
-     <div class="product-card" *ngFor="let product of filteredProducts">
-          <!-- Make image clickable to navigate to detail -->
-          <div class="product-image-wrapper" (click)="navigateToProduct(product._id)">
-               <img class="product-image" [src]="product.images?.[0]?.asset?.url" [alt]="product.title"
-                    onerror="this.src='assets/placeholder-image.jpg'" />
-          </div>
+                    <button type="submit" class="password-submit">
+                         ACCESS WHOLESALE CATALOG
+                    </button>
+               </form>
 
-          <!-- Make content clickable to navigate to detail -->
-          <div class="product-content" (click)="navigateToProduct(product._id)">
-               <h3 class="product-title">{{ product.title }}</h3>
-               <p class="product-description">{{ product.description || 'No description available.' }}</p>
-          </div>
-
-          <div class="product-footer">
-               <p class="product-price">${{ product.price }}</p>
-               <!-- Add event.stopPropagation() to prevent navigation when clicking add to cart -->
-               <button class="add-to-cart-btn" (click)="addToCart(product, $event)">
-                    <i class="bi bi-cart-plus"></i> Add to Cart
-               </button>
+               <div class="password-footer">
+                    <div class="elegant-divider">
+                         <span class="divider-diamond">◊</span>
+                    </div>
+                    <p>Authorized retailers & qualified dealers</p>
+               </div>
           </div>
      </div>
 </div>
 
-<p class="disclaimer-text">
-     *Disclaimer — Prices on products are subject to change due to the rising market costs of
-     product materials. If you have any questions or concerns regarding pricing, please contact me.
-     Thank you for understanding.
-</p>
+<!-- Main Store Content (Hidden until authenticated) -->
+<div class="wholesale-container" *ngIf="isAuthenticated">
+     <!-- Header Section -->
+     <div class="header-section">
+          <h1 class="main-title">P DIAMOND DESIGNS</h1>
+
+          <!-- Category Navigation -->
+          <div class="category-navigation">
+               <a *ngFor="let cat of categories" href="#" (click)="filterByCategory(cat.value); $event.preventDefault()"
+                    [class.active]="selectedCategory === cat.value" class="category-link">
+                    {{ cat.label }}
+               </a>
+          </div>
+     </div>
+
+     <!-- Products Grid -->
+     <div class="products-section">
+          <div class="product-grid">
+               <div class="product-card" *ngFor="let product of filteredProducts">
+                    <!-- Product Image -->
+                    <div class="product-image-container" (click)="navigateToProduct(product._id)">
+                         <img class="product-image" [src]="product.images?.[0]?.asset?.url" [alt]="product.title"
+                              onerror="this.src='assets/placeholder-image.jpg'" />
+
+                         <!-- Heart Icon Overlay -->
+                         <div class="heart-overlay">
+                              <i class="bi bi-heart"></i>
+                         </div>
+                    </div>
+
+                    <!-- Product Information -->
+                    <div class="product-info" (click)="navigateToProduct(product._id)">
+                         <h3 class="product-title">{{ product.title }}</h3>
+                         <p class="product-description">{{ product.description || 'No description available.' }}</p>
+                         <div class="product-price">
+                              <span class="price">${{ product.price }}</span>
+                         </div>
+                    </div>
+
+                    <!-- Add to Cart Button -->
+                    <div class="product-actions">
+                         <button class="add-to-cart-btn" (click)="addToCart(product, $event)">
+                              <i class="bi bi-cart-plus"></i> Add to Cart
+                         </button>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+     <!-- Disclaimer -->
+     <div class="disclaimer-section">
+          <p class="disclaimer-text">
+               *Disclaimer — Prices on products are subject to change due to the rising market costs of
+               product materials. If you have any questions or concerns regarding pricing, please contact me.
+               Thank you for understanding.
+          </p>
+     </div>
+</div>

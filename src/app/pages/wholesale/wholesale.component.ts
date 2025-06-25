@@ -1,17 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { SanityService } from '../../services/sanity.service';
+import { AuthService } from '../../services/auth.service'; // Add this import
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-wholesale',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './wholesale.component.html',
   styleUrl: './wholesale.component.css',
 })
 export class WholesaleComponent implements OnInit {
+  // Authentication properties - now synced with navbar
+  isAuthenticated = false;
+  passwordInput = '';
+  showError = false;
+  private readonly correctPassword = 'wholesale2024';
+
+  // Your existing properties
   featuredProduct: any = {
     title: 'Sample Product',
     description: 'This is a sample product description.',
@@ -31,22 +40,67 @@ export class WholesaleComponent implements OnInit {
     { label: 'Necklaces', value: 'necklace' },
   ];
 
-  constructor(private sanityService: SanityService, private router: Router) {}
+  constructor(
+    private sanityService: SanityService,
+    private router: Router,
+    private authService: AuthService // Add AuthService
+  ) {}
 
   ngOnInit(): void {
+    // Subscribe to authentication state from navbar
+    this.isAuthenticated = false;
+    // this.authService.loggedIn$.subscribe((isLoggedIn) => {
+    //   this.isAuthenticated = isLoggedIn;
+    //   // If logged in via navbar, load products
+    //   if (isLoggedIn && this.products.length === 0) {
+    //     this.loadProducts();
+    //   }
+    // });
+
+    // Load products if already authenticated
+    if (this.isAuthenticated) {
+      this.loadProducts();
+    }
+  }
+
+  private loadProducts(): void {
     this.sanityService.getProducts().subscribe({
       next: (products) => {
         this.products = products;
         this.filteredProducts = products;
-        console.log('Loaded products:', products); // For debugging
+        console.log('Loaded products:', products);
       },
       error: (error) => {
         console.error('Error loading products:', error);
       },
     });
   }
+
+  // Password protection method - now syncs with navbar
+  checkPassword(): void {
+    if (this.passwordInput === this.correctPassword) {
+      this.isAuthenticated = true;
+      this.authService.login(); // Update navbar state
+      this.showError = false;
+      this.passwordInput = '';
+      this.loadProducts(); // Load products after successful login
+    } else {
+      this.showError = true;
+      this.passwordInput = '';
+      setTimeout(() => {
+        this.showError = false;
+      }, 3000);
+    }
+  }
+
+  onPasswordKeyPress(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      this.checkPassword();
+    }
+  }
+
   navigateToProduct(productId: string): void {
-    console.log('Navigating to product:', productId); // For debugging
+    console.log('Navigating to product:', productId);
     this.router.navigate(['/product', productId]);
   }
 
@@ -62,31 +116,20 @@ export class WholesaleComponent implements OnInit {
   }
 
   addToCart(product: any, event?: Event): void {
-    // Prevent navigation when clicking add to cart button
     if (event) {
       event.stopPropagation();
     }
 
     console.log('Adding to cart from grid:', product);
-
-    // TODO: Implement your cart logic here
-    // For now, just show an alert
     alert(`Added ${product.title} to cart!`);
   }
 
-  // redirectToStripe() {
-  //   const stripe = Stripe('your-stripe-key');
-  //   stripe
-  //     .redirectToCheckout({
-  //       lineItems: [{ price: 'price_1NXXXXXX', quantity: 1 }],
-  //       mode: 'payment',
-  //       successUrl: 'https://your-site.com/success',
-  //       cancelUrl: 'https://your-site.com/cancel',
-  //     })
-  //     .then((result: { error: { message: any } }) => {
-  //       if (result.error) {
-  //         console.error(result.error.message);
-  //       }
-  //     });
-  // }
+  // Updated logout method - now syncs with navbar
+  logout(): void {
+    this.isAuthenticated = false;
+    this.authService.logout(); // Update navbar state
+    this.passwordInput = '';
+    this.showError = false;
+    this.router.navigate(['/']); // Navigate to home
+  }
 }

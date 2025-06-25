@@ -9,29 +9,44 @@
 
 /* Style the logo */
 .logo {
-  height: 2in; /* Set logo height to 1.5 inches */
+  height: 2.5in; /* Set logo height to 1.5 inches */
   max-width: auto; /* Maintain aspect ratio */
+}
+.password-submit {
+  width: 100%;
+  padding: 1.2rem 2rem;
+  background: linear-gradient(135deg, #5F9EA0 0%, #20B2AA 100%);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(95, 158, 160, 0.25);
 }
 
 
 .login-btn {
-  height: 1.5rem;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.875rem;
+  height: 2rem;
+  padding: 1.2rem 2rem;
+  font-size: 1rem;
   line-height: 1;
-  border-radius: 4px;
-  background: linear-gradient(to right, #a55728, #bf6e40); /* Elegant bronze gradient */
+  border-radius: 50px;
+  background: linear-gradient(135deg, #5F9EA0 0%, #20B2AA 100%); /* Elegant bronze gradient */
   color: #fff;
   border: none;
-
+  font-weight: 500;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  
 }
 
 .login-btn:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transform: translateY(-1px);
-  background: linear-gradient(to right, #bf6e40, #a55728); /* subtle shift on hover */
+  background: linear-gradient(135deg, #20B2AA 0%, #48D1CC 100%);
 }
 
 .login-btn:active {
@@ -75,3 +90,29 @@
     border-bottom: 1px solid #34383c;  
        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 } */
+
+.password-submit {
+  width: 100%;
+  padding: 1.2rem 2rem;
+  background: linear-gradient(135deg, #5F9EA0 0%, #20B2AA 100%);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(95, 158, 160, 0.25);
+}
+
+.password-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(95, 158, 160, 0.35);
+  background: linear-gradient(135deg, #20B2AA 0%, #48D1CC 100%);
+}
+
+.password-submit:active {
+  transform: translateY(0);
+}
+

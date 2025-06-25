@@ -5,6 +5,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { WholesaleComponent } from './pages/wholesale/wholesale.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { AuthGuard } from './services/auth.guard';
 
 
 export const routes: Routes = [
@@ -12,7 +13,11 @@ export const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'wholesale', component: WholesaleComponent },
+  {
+    path: 'wholesale',
+    component: WholesaleComponent,
+    canActivate: [AuthGuard], // Protect this route
+  },
   { path: 'products', component: WholesaleComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: '**', redirectTo: '/products' },
