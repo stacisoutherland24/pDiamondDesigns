@@ -1,66 +1,72 @@
 <nav class="navbar navbar-expand-lg shadow-sm bg-white">
   <div class="container py-2">
-    <!-- Logo -->
+
+    <!-- Logo (left) -->
     <a routerLink="/" class="navbar-brand me-4">
       <img src="assets/logo.png" alt="Logo" class="logo">
     </a>
 
-    <!-- Toggler for mobile -->
+    <!-- Mobile Toggler -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNav">
+    <!-- Main Collapse Container -->
+    <div class="collapse navbar-collapse" id="navbarNav">
 
-      <!-- Center Nav Links -->
-      <ul class="navbar-nav mx-auto text-center gap-3">
-        <li class="nav-item">
-          <a class="nav-link fw-medium" routerLink="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-medium" routerLink="/about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-medium" routerLink="/contact">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-medium" routerLink="/wholesale">Wholesale</a>
-        </li>
-        @if (!loggedIn)
-        {
-        <li class="nav-item">
-          <a class="nav-link fw-medium" routerLink="/registration">Registration</a>
-        </li>
-        }
-      </ul>
+      <!-- Full-width Flexbox Container -->
+      <div class="d-flex justify-content-between align-items-center w-100">
 
-      <!-- Right Section: Cart + Login/Logout -->
-      <div class="d-flex align-items-center gap-3">
-        <!-- Cart Icon with Badge -->
-        <a href="#" class="text-dark position-relative">
-          <i class="bi bi-cart-fill" style="font-size: 1.6rem;"></i>
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            3
-          </span>
-        </a>
+        <!-- Center Nav Links -->
+        <ul class="navbar-nav mx-auto text-center gap-3">
+          <li class="nav-item">
+            <a class="nav-link fw-medium" routerLink="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-medium" routerLink="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-medium" routerLink="/contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-medium" routerLink="/wholesale">Wholesale</a>
+          </li>
+          @if (!loggedIn)
+          {
+          <li class="nav-item">
+            <a class="nav-link fw-medium" routerLink="/registration">Registration</a>
+          </li>
+          }
+        </ul>
 
-        <!-- Auth Buttons -->
-        @if (!loggedIn)
-        {
-        <button class="btn login-btn d-flex align-items-center gap-2 shadow-sm transition" (click)="login()">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span class="fw-medium">Login</span>
-        </button>
-        }
-        @if (loggedIn)
-        {
-      <button class="btn login-btn d-flex align-items-center gap-2" (click)="logout()">
-        <i class="bi bi-box-arrow-right"></i>
-        <span class="fw-medium">Logout</span>
-      </button>
-        }
+        <!-- Right Section -->
+        <div class="d-flex align-items-center gap-3 ms-auto">
+          <!-- Cart Icon -->
+          <a href="#" class="text-dark position-relative">
+            <i class="bi bi-cart-fill" style="font-size: 1.6rem;"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              3
+            </span>
+          </a>
+
+          <!-- Auth Buttons -->
+          @if (!loggedIn)
+          {
+          <button class="btn login-btn d-flex align-items-center gap-2 shadow-sm transition" (click)="login()">
+            <i class="bi bi-box-arrow-in-right"></i>
+            <span class="fw-medium">Login</span>
+          </button>
+          }
+          @if (loggedIn)
+          {
+          <button class="btn login-btn d-flex align-items-center gap-2" (click)="logout()">
+            <i class="bi bi-box-arrow-right"></i>
+            <span class="fw-medium">Logout</span>
+          </button>
+          }
+        </div>
+
       </div>
     </div>
   </div>
