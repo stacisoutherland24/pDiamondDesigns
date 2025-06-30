@@ -26,24 +26,11 @@
   }
 }
 
-/* Buttons */
-.custom-btn {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  background: linear-gradient(to right, #a55728, #bf6e40);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 14px;
-  border-radius: 4px;
-  cursor: pointer;
+@keyframes subtitleFade {
+  to {
+    opacity: 1;
+  }
 }
-
-.custom-btn:hover {
-  background-color: rgb(172, 99, 58);
-  transform: translateY(-2px);
-}
-
-
 
 /* Brand Title */
 .brand-title {
@@ -53,6 +40,9 @@
   position: relative;
   padding: 2rem;
   animation: titleEntrance 1.5s ease-out;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 15px rgba(43, 43, 43, 0.1));
 }
 
 .brand-title .main {
@@ -80,7 +70,6 @@
   background: linear-gradient(90deg, transparent, #2b2b2b, transparent);
   animation: underlineGrow 2s ease-out 0.5s forwards;
 }
-
 
 /* Hover effect for main title */
 .brand-title:hover .main {
@@ -131,100 +120,32 @@
   color: #333;
 }
 
-/* Showroom Section */
-.showroom-section {
-  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-  padding: 4rem 3rem;
-  text-align: center;
-  border-radius: 24px;
-  max-width: 55%;
-  margin: 4rem auto;
-  box-shadow: 0 0 10px rgba(100, 21, 33, 0.6);
-
-  position: relative;
-  overflow: hidden;
-}
-
-.showroom-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(125, 211, 192, 0.3), transparent);
-}
-
-.showroom-section::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(125, 211, 192, 0.02) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.showroom-title {
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: #2b2b2b;
-  margin-bottom: 3rem;
-  letter-spacing: 0.4rem;
-  text-transform: uppercase;
-  font-family: 'Playfair Display', serif;
-  position: relative;
-  z-index: 2;
-}
-
-.showroom-title::after {
-  content: '◊';
-  position: absolute;
-  bottom: -1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #7dd3c0;
-  font-size: 1.2rem;
-  opacity: 0.6;
-}
-
-.showroom-logo {
-  width: 350px;
-  margin: 2.5rem auto;
-  transition: all 0.4s ease;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.06));
-  position: relative;
-  z-index: 2;
-}
-
-.showroom-logo:hover {
-  transform: scale(1.05) translateY(-2px);
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.1));
-}
-
-.showroom-text {
-  font-size: 1.15rem;
-  font-family: "Futura PT", "Helvetica Neue", sans-serif;
-  color: #555;
-  line-height: 1.8;
-  max-width: 500px;
-  margin: 0 auto;
-  font-weight: 300;
-  position: relative;
-  z-index: 2;
-}
-
-.showroom-text strong {
-  color: #2b2b2b;
+/* Password Submit Button */
+.password-submit {
+  width: 100%;
+  padding: 1.2rem 2rem;
+  background: linear-gradient(135deg, #5F9EA0 0%, #20B2AA 100%);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-size: 1rem;
   font-weight: 500;
-  font-size: 1.2rem;
-  display: block;
-  margin: 0.5rem 0;
-  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(95, 158, 160, 0.25);
 }
 
-/* Images */
+.password-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(95, 158, 160, 0.35);
+  background: linear-gradient(135deg, #20B2AA 0%, #48D1CC 100%);
+}
+
+.password-submit:active {
+  transform: translateY(0);
+}
+
+/* Custom Images */
 .custom-image {
   box-shadow: 0 0 20px rgba(100, 21, 33, 0.6);
   margin: 20px 0;
@@ -234,14 +155,7 @@
   border-radius: 5px;
 }
 
-.image-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  border-radius: 5px;
-}
-
+/* Jewelry Grid */
 .jewelry-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -249,13 +163,6 @@
   padding: 24px;
   max-width: 1200px;
   margin: 0 auto;
-}
-.showroom-text2 {
-  font-size: 1.5rem;
-}
-
-.showroom-text3 {
-  font-size: 1.3rem;
 }
 
 .image-box {
@@ -286,26 +193,100 @@
   transform: scale(1.02);
 }
 
-
-/* Colored Div */
+/* Wholesale Colored Div */
 .wholesale-colored-div {
   border-radius: 5px;
 }
 
-/* Animations */
-.green-title.animate {
-  opacity: 1;
-  transform: translateY(0);
+/* Showroom Section */
+.showroom-section {
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 4rem 3rem;
+  text-align: center;
+  border-radius: 24px;
+  max-width: 55%;
+  margin: 4rem auto;
+  box-shadow: 0 0 10px rgba(100, 21, 33, 0.6);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Responsive */
+.showroom-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(125, 211, 192, 0.3), transparent);
+}
+
+.showroom-section::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(125, 211, 192, 0.02) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.showroom-logo {
+  width: 350px;
+  margin: 2.5rem auto;
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.06));
+  position: relative;
+  z-index: 2;
+}
+
+.showroom-logo:hover {
+  transform: scale(1.05) translateY(-2px);
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.1));
+}
+
+.showroom-text2 {
+  font-size: 1.5rem;
+}
+
+.showroom-text3 {
+  font-size: 1.3rem;
+}
+
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
-  .showroom-section {
-    max-width: 95%;
-    padding: 1.5rem 1rem;
+  .brand-title .main {
+    letter-spacing: 0.2rem;
+  }
+  
+  .brand-title .sub {
+    letter-spacing: 0.25rem;
   }
 
-  
+  .showroom-section {
+    max-width: 95%;
+    padding: 2rem 1.5rem;
+    margin: 2rem auto;
+  }
+
+  .showroom-logo {
+    width: 280px;
+    margin: 1.5rem auto;
+  }
+
+  .showroom-text2 {
+    font-size: 1.2rem;
+  }
+
+  .showroom-text3 {
+    font-size: 1.1rem;
+  }
+
+  .green-title {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+  }
 
   .responsive-text {
     max-width: 95%;
@@ -331,147 +312,8 @@
     padding: 20px;
   }
 
-  .image-container {
-    flex-direction: column;
-    gap: 15px;
-  }
-
   .image-box {
     max-width: 100%;
-  }
-}
-
-@keyframes subtitleFade {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Decorative elements */
-.brand-title::before,
-.brand-title::after {
-  content: '◆';
-  position: absolute;
-  font-size: 1.2rem;
-  color: #2b2b2b;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0;
-  animation: diamondFade 1s ease-out 1.2s forwards;
-}
-
-.brand-title::before {
-  left: -30px;
-  animation-delay: 1.2s;
-}
-
-.brand-title::after {
-  right: -30px;
-  animation-delay: 1.4s;
-}
-
-@keyframes diamondFade {
-  to {
-    opacity: 0.7;
-  }
-}
-
-/* Elegant glow effect */
-.brand-title {
-  filter: drop-shadow(0 0 15px rgba(43, 43, 43, 0.1));
-}
-
-/* Premium border effect */
-.brand-title {
-  border: 1px solid transparent;
-  border-radius: 10px;
-  /* background: linear-gradient(white, white) padding-box,
-              linear-gradient(45deg, transparent 30%, rgba(43, 43, 43, 0.1), transparent 70%) border-box; */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .brand-title::before,
-  .brand-title::after {
-    display: none;
-  }
-  
-  .brand-title .main {
-    letter-spacing: 0.2rem;
-  }
-  
-  .brand-title .sub {
-    letter-spacing: 0.25rem;
-  }
-}
-
-.password-submit {
-  width: 100%;
-  padding: 1.2rem 2rem;
-  background: linear-gradient(135deg, #5F9EA0 0%, #20B2AA 100%);
-  border: none;
-  border-radius: 50px;
-  color: white;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(95, 158, 160, 0.25);
-}
-
-.password-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(95, 158, 160, 0.35);
-  background: linear-gradient(135deg, #20B2AA 0%, #48D1CC 100%);
-}
-
-.password-submit:active {
-  transform: translateY(0);
-}
-
-.hero-image {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  height: 500px; /* or desired height */
-  object-fit: cover;
-}
-
-/* Enhanced mobile responsiveness for showroom section */
-@media (max-width: 768px) {
-  .showroom-section {
-    max-width: 95%;
-    padding: 2rem 1.5rem; /* Increased padding for better spacing */
-    margin: 2rem auto; /* Reduced margin */
-  }
-
-  .showroom-title {
-    font-size: 2rem; /* Smaller title on mobile */
-    letter-spacing: 0.2rem;
-    margin-bottom: 2rem;
-  }
-
-  .showroom-logo {
-    width: 280px; /* Smaller logo on mobile */
-    margin: 1.5rem auto;
-  }
-
-  .showroom-text2 {
-    font-size: 1.2rem; /* Reduced from 1.5rem for mobile */
-  }
-
-  .showroom-text3 {
-    font-size: 1.1rem; /* Reduced from 1.3rem for mobile */
-  }
-
-  .showroom-text {
-    font-size: 1rem; /* Base text size for mobile */
-    max-width: 100%; /* Full width on mobile */
-    padding: 0 0.5rem;
-  }
-
-  .green-title {
-    font-size: 2.2rem; /* Smaller green title on mobile */
-    margin-bottom: 1.5rem;
   }
 }
 
@@ -482,13 +324,8 @@
     margin: 1.5rem auto;
   }
 
-  .showroom-title {
-    font-size: 1.8rem;
-    letter-spacing: 0.1rem;
-  }
-
   .showroom-logo {
-    width: 240px; /* Even smaller logo for small phones */
+    width: 240px;
   }
 
   .showroom-text2 {
@@ -502,4 +339,52 @@
   .green-title {
     font-size: 2rem;
   }
+}
+
+
+
+
+.hero-section {
+  width: 100vw;
+  height: 70vh;
+  position: relative;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 90%;
+
+  display: block;
+}
+
+/* Optional: Overlay text styling */
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero-overlay h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-overlay p {
+  font-size: 1.2rem;
+}
+
+/* Make sure your content container has proper spacing after the hero */
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }

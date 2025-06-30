@@ -9,7 +9,7 @@
 
 /* Style the logo */
 .logo {
-  height: 2.5in; /* Set logo height to 1.5 inches */
+  height: 2.0in; /* Set logo height to 1.5 inches */
   max-width: auto; /* Maintain aspect ratio */
 }
 .password-submit {
