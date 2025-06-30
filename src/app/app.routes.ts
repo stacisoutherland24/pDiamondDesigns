@@ -7,7 +7,6 @@ import { WholesaleComponent } from './pages/wholesale/wholesale.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { AuthGuard } from './services/auth.guard';
 
-
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
@@ -16,7 +15,7 @@ export const routes: Routes = [
   {
     path: 'wholesale',
     component: WholesaleComponent,
-    canActivate: [AuthGuard], // Protect this route
+    // Removed AuthGuard - component handles authentication internally
   },
   { path: 'products', component: WholesaleComponent },
   { path: 'product/:id', component: ProductDetailComponent },
