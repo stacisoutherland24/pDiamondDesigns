@@ -360,6 +360,21 @@
 
   display: block;
 }
+.girl-section {
+  width: 100vw;
+  height: 80vh;
+  position: relative;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
+}
+.girl-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 0%;
+
+  display: block;
+}
 
 /* Optional: Overlay text styling */
 .hero-overlay {
