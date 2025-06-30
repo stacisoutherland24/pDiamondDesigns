@@ -48,15 +48,23 @@ export class WholesaleComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Subscribe to authentication state from navbar
-    this.isAuthenticated = false;
-    // this.authService.loggedIn$.subscribe((isLoggedIn) => {
-    //   this.isAuthenticated = isLoggedIn;
-    //   // If logged in via navbar, load products
-    //   if (isLoggedIn && this.products.length === 0) {
-    //     this.loadProducts();
-    //   }
-    // });
+    console.log('Wholesale component ngOnInit called');
+    // Get initial authentication state
+    this.isAuthenticated = this.authService.isLoggedIn;
+    console.log(
+      'Wholesale component - Initial auth state:',
+      this.isAuthenticated
+    );
+
+    // Subscribe to authentication state changes from navbar
+    this.authService.loggedIn$.subscribe((isLoggedIn) => {
+      console.log('Wholesale component - Auth state changed to:', isLoggedIn);
+      this.isAuthenticated = isLoggedIn;
+      // If logged in and products not loaded yet, load them
+      if (isLoggedIn && this.products.length === 0) {
+        this.loadProducts();
+      }
+    });
 
     // Load products if already authenticated
     if (this.isAuthenticated) {
