@@ -17,13 +17,19 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
+    // Set initial state
+    this.loggedIn = this.authService.isLoggedIn;
+
+    // Subscribe to changes
     this.authService.loggedIn$.subscribe(
       (isLoggedIn) => (this.loggedIn = isLoggedIn)
     );
   }
 
   login(): void {
-    this.authService.login();
+    console.log('Navbar login clicked - navigating to wholesale');
+    // Don't call authService.login() here - just navigate to wholesale page
+    // The password overlay will show because user isn't authenticated yet
     this.router.navigate(['/wholesale']);
   }
 

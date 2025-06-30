@@ -11,9 +11,9 @@
 
                <form (ngSubmit)="checkPassword()" class="password-form">
                     <div class="input-group">
-                         <input type="password" [(ngModel)]="passwordInput" name="password"
+                         <input type="password" [(ngModel)]="passwordInput" name="access-code"
                               placeholder="Enter access code" class="password-input" [class.error]="showError"
-                              autocomplete="off">
+                              autocomplete="new-password">
                          <div class="input-underline"></div>
                     </div>
 
