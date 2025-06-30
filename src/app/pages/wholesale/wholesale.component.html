@@ -40,7 +40,7 @@
 <div class="wholesale-container" *ngIf="isAuthenticated">
      <!-- Header Section -->
      <div class="header-section">
-          <h1 class="main-title">P DIAMOND DESIGNS</h1>
+          <h1 class="main-title">P Diamond Designs</h1>
 
           <!-- Category Navigation -->
           <div class="category-navigation">
@@ -61,9 +61,8 @@
                               onerror="this.src='assets/placeholder-image.jpg'" />
 
                          <!-- Heart Icon Overlay -->
-                         <div class="heart-overlay">
-                              <i class="bi bi-heart"></i>
-                         </div>
+                         <div class="heart-overlay" (click)="toggleFavorite(product, $event)">
+                              <i [class]="isFavorite(product._id) ? 'bi bi-heart-fill text-danger' : 'bi bi-heart'"></i>                      </div>
                     </div>
 
                     <!-- Product Information -->

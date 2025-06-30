@@ -14,11 +14,12 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './wholesale.component.css',
 })
 export class WholesaleComponent implements OnInit {
+  favoriteIds: Set<string> = new Set();
   // Authentication properties - now synced with navbar
   isAuthenticated = false;
   passwordInput = '';
   showError = false;
-  private readonly correctPassword = 'wholesale2024';
+  private readonly correctPassword = 'w';
 
   // Your existing properties
   featuredProduct: any = {
@@ -49,6 +50,7 @@ export class WholesaleComponent implements OnInit {
   ngOnInit(): void {
     // Subscribe to authentication state from navbar
     this.isAuthenticated = false;
+    this.loadFavorites();
     // this.authService.loggedIn$.subscribe((isLoggedIn) => {
     //   this.isAuthenticated = isLoggedIn;
     //   // If logged in via navbar, load products
@@ -61,6 +63,35 @@ export class WholesaleComponent implements OnInit {
     if (this.isAuthenticated) {
       this.loadProducts();
     }
+  }
+  loadFavorites(): void {
+    const stored = localStorage.getItem('favorites');
+    if (stored) {
+      this.favoriteIds = new Set(JSON.parse(stored));
+    }
+  }
+
+  saveFavorites(): void {
+    localStorage.setItem(
+      'favorites',
+      JSON.stringify(Array.from(this.favoriteIds))
+    );
+  }
+
+  toggleFavorite(product: any, event: MouseEvent): void {
+    event.stopPropagation(); // prevent click from bubbling to product nav
+
+    const id = product._id;
+    if (this.favoriteIds.has(id)) {
+      this.favoriteIds.delete(id);
+    } else {
+      this.favoriteIds.add(id);
+    }
+    this.saveFavorites();
+  }
+
+  isFavorite(id: string): boolean {
+    return this.favoriteIds.has(id);
   }
 
   private loadProducts(): void {
