@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,11 @@ import { CommonModule } from '@angular/common';
 export class NavbarComponent implements OnInit {
   loggedIn = false;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private favoritesService: FavoritesService
+  ) {}
 
   ngOnInit(): void {
     // Set initial state
@@ -36,5 +41,9 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  getFavoritesCount(): number {
+    return this.favoritesService.getFavoritesCount();
   }
 }

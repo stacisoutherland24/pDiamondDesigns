@@ -1,96 +1,19 @@
 /* Set the height of the navbar */
 .navbar {
-   background-color: #f5f5f5; 
+  background-color: #f5f5f5; 
   font-family: "Playfair Display", serif;
-  height: 2in; /* Set the overall height of the navbar */
+  height: 2in;
   display: flex;
-  align-items: center; /* Vertically center content */
+  align-items: center;
 }
 
 /* Style the logo */
 .logo {
-  height: 2.0in; /* Set logo height to 1.5 inches */
-  max-width: auto; /* Maintain aspect ratio */
-}
-.password-submit {
-  width: 100%;
-  padding: 1.2rem 2rem;
-  background: linear-gradient(135deg, #5F9EA0 0%, #20B2AA 100%);
-  border: none;
-  border-radius: 50px;
-  color: white;
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 2px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(95, 158, 160, 0.25);
+  height: 2.0in;
+  max-width: auto;
 }
 
-
-.login-btn {
-  height: 2rem;
-  padding: 1.2rem 2rem;
-  font-size: 1rem;
-  line-height: 1;
-  border-radius: 50px;
-  background: linear-gradient(135deg, #5F9EA0 0%, #20B2AA 100%); /* Elegant bronze gradient */
-  color: #fff;
-  border: none;
-  font-weight: 500;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  
-}
-
-.login-btn:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
-  background: linear-gradient(135deg, #20B2AA 0%, #48D1CC 100%);
-}
-
-.login-btn:active {
-  transform: scale(0.98);
-}
-
-/* Center the navigation links */
-.nav-link {
-  font-size: 1.25rem; /* Adjust font size */
-  color: #000; /* Black color for links */
-  padding: 0 20px; /* Add spacing between links */
-  transition: color 0.3s ease-in-out;
-}
-
-.nav-link:hover {
-  color: #007bff; /* Change link color on hover */
-}
-
-/* Style the shopping cart icon */
-.bi-cart {
-  color: #000; /* Default color for the icon */
-  transition: color 0.3s;
-}
-
-.bi-cart:hover {
-  color: #007bff; /* Change color on hover */
-}
-
-/* Style the buttons */
-.btn {
-  font-size: 1rem; /* Adjust button font size */
-  padding: 0.5rem 1rem; /* Add spacing inside buttons */
-}
-/* Custom Logo Styling */
-.navbar-logo {
-  height: 1.5in; /* Navbar logo size */
-  max-width: 100%;
-}
-
-/* .navbar {
-    border-bottom: 1px solid #34383c;  
-       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-} */
-
+/* Password Submit Button - UNCHANGED */
 .password-submit {
   width: 100%;
   padding: 1.2rem 2rem;
@@ -116,3 +39,100 @@
   transform: translateY(0);
 }
 
+/* Login Button */
+.login-btn {
+  height: 2rem;
+  padding: 1.2rem 2rem;
+  font-size: 1rem;
+  line-height: 1;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #5F9EA0 0%, #20B2AA 100%);
+  color: #fff;
+  border: none;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #20B2AA 0%, #48D1CC 100%);
+}
+
+.login-btn:active {
+  transform: scale(0.98);
+}
+
+/* Navigation Links */
+.nav-link {
+  font-size: 1.25rem;
+  color: #000;
+  padding: 0 20px;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+/* Icon Container */
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Cart and Favorites Icons */
+.cart-icon, 
+.favorites-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.bi-cart-fill, 
+.bi-heart {
+  font-size: 1.6rem !important;
+}
+
+.bi-heart-fill {
+  color: #dc3545 !important;
+}
+
+/* Count Badges */
+.position-absolute.badge {
+  position: absolute !important;
+  top: -10px !important;
+  right: -10px !important;
+  background: white !important;
+  color: black !important;
+  border: 2px solid #dee2e6 !important;
+  border-radius: 50% !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  padding: 0 !important;
+  min-width: 22px !important;
+  height: 22px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+
+.bg-danger {
+  background: white !important;
+  color: black !important;
+}
+
+/* Hover Effects */
+.cart-icon:hover .bi-cart-fill {
+  color: #007bff !important;
+}
+
+.favorites-link:hover .bi-heart {
+  color: #e91e63 !important;
+}

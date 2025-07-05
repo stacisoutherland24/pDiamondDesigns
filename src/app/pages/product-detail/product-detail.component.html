@@ -1,0 +1,81 @@
+<!-- product-detail.component.html -->
+<div class="product-detail-container" *ngIf="!loading">
+     <!-- Breadcrumb Navigation -->
+     <div class="breadcrumb">
+          <a routerLink="/wholesale">Wholesale Catalog</a> /
+          <span>{{ product?.title }}</span>
+          </div>
+
+     <div class="product-detail-content">
+          <!-- Product Images Section -->
+          <div class="product-images">
+               <!-- Thumbnail Images -->
+               <div class="thumbnail-images">
+                    <div *ngFor="let image of product?.images; let i = index" class="thumbnail"
+                         [class.selected]="i === selectedImageIndex" (click)="selectImage(i)">
+                         <img [src]="image?.asset.url" [alt]="product?.title" />
+                    </div>
+               </div>
+
+               <!-- Main Product Image -->
+               <div class="main-image">
+                    <img [src]="product?.images[selectedImageIndex]?.asset.url" [alt]="product?.title"
+                         class="main-product-image" />
+                         <div class="heart-icon" (click)="toggleFavorite()">
+                              <i [class]="isFavorite() ? 'bi bi-heart-fill text-danger' : 'bi bi-heart'"></i>                   </div>
+               </div>
+          </div>
+
+          <!-- Product Information Section -->
+          <div class="product-info">
+               <h1 class="product-title">{{ product?.title }}</h1>
+
+               <div class="product-price">
+                    <span class="price">${{ product?.price }}</span>
+               </div>
+
+               <!-- Product Description -->
+               <div class="product-description" *ngIf="product?.description">
+                    <h3>Description</h3>
+                    <p>{{ product?.description }}</p>
+               </div>
+
+               <!-- Product Type -->
+               <div class="product-type" *ngIf="product?.type">
+                    <p><strong>Type:</strong> {{ product?.type }}</p>
+               </div>
+
+               <!-- Quantity Selector -->
+               <div class="quantity-section">
+                    <label for="quantity">Qty</label>
+                    <div class="quantity-controls">
+                         <button type="button" (click)="decreaseQuantity()" [disabled]="quantity <= 1">-</button>
+                         <input type="number" id="quantity" [(ngModel)]="quantity" min="1" readonly>
+                         <button type="button" (click)="increaseQuantity()">+</button>
+                    </div>
+               </div>
+
+               <!-- Add to Cart Button -->
+               <button class="add-to-cart-btn" (click)="addToCart()">
+                    Add to Cart
+               </button>
+
+               <!-- Back Button -->
+               <button class="back-btn" (click)="goBack()">
+                    <i class="bi bi-arrow-left"></i> Back to Wholesale Catalog      </button>
+          </div>
+     </div>
+
+     <!-- Disclaimer -->
+     <p class="disclaimer-text">
+          *Disclaimer — Prices on products are subject to change due to the rising market costs of
+          product materials. If you have any questions or concerns regarding pricing, please contact me.
+          Thank you for understanding.
+     </p>
+</div>
+
+<!-- Loading State -->
+<div class="loading-container" *ngIf="loading">
+     <div class="loading-spinner"></div>
+     <p>Loading product details...</p>
+     </div>

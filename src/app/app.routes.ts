@@ -6,6 +6,7 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { WholesaleComponent } from './pages/wholesale/wholesale.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { AuthGuard } from './services/auth.guard';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +18,7 @@ export const routes: Routes = [
     component: WholesaleComponent,
     // Removed AuthGuard - component handles authentication internally
   },
+  { path: 'favorites', component: FavoritesComponent },
   { path: 'products', component: WholesaleComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: '**', redirectTo: '/products' },

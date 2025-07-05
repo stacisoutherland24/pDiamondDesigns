@@ -110,20 +110,18 @@
   right: 15px;
   background: white;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  opacity: 0;
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  opacity: 1; 
 }
 
-.product-card:hover .heart-overlay {
-  opacity: 1;
-}
+
 
 .heart-overlay:hover {
   background: #f8f9fa;
