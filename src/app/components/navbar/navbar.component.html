@@ -32,6 +32,7 @@
           <li class="nav-item">
             <a class="nav-link fw-medium" routerLink="/wholesale">Wholesale</a>
           </li>
+         
           @if (!loggedIn)
           {
           <li class="nav-item">
@@ -41,31 +42,40 @@
         </ul>
 
         <!-- Right Section -->
-        <div class="d-flex align-items-center gap-3 ms-auto">
+        <div class="d-flex align-items-center gap-3 ms-auto navbar-icons">
           <!-- Cart Icon -->
-          <a href="#" class="text-dark position-relative">
-            <i class="bi bi-cart-fill" style="font-size: 1.6rem;"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+             @if (loggedIn)
+            {
+          <a href="#" class="cart-icon text-dark position-relative">
+            <i class="bi bi-cart-fill"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
               3
             </span>
           </a>
-
+        
+          <!-- Favorites Icon -->
+        
+        
+          <a routerLink="/favorites" class="favorites-link position-relative">
+            <i class="bi bi-heart"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" *ngIf="getFavoritesCount() > 0">
+              {{ getFavoritesCount() }}
+            </span>
+          </a>
+          }
           <!-- Auth Buttons -->
-          @if (!loggedIn)
-          {
+          @if (!loggedIn) {
           <button class="btn login-btn d-flex align-items-center gap-2 shadow-sm transition" (click)="login()">
             <i class="bi bi-box-arrow-in-right"></i>
             <span class="fw-medium">Login</span>
           </button>
           }
-          @if (loggedIn)
-          {
+          @if (loggedIn) {
           <button class="btn login-btn d-flex align-items-center gap-2" (click)="logout()">
             <i class="bi bi-box-arrow-right"></i>
             <span class="fw-medium">Logout</span>
           </button>
-          }
-        </div>
+          }  </div>
 
       </div>
     </div>
