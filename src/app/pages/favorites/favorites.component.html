@@ -1,0 +1,50 @@
+<div class="favorites-container">
+     <div class="favorites-header">
+          <h1>My Favorites</h1>
+          <button *ngIf="favoriteProducts.length > 0" class="clear-all-btn" (click)="clearAllFavorites()">
+               Clear All Favorites
+          </button>
+     </div>
+
+     <div class="favorites-grid" *ngIf="favoriteProducts.length > 0">
+          <div class="favorite-item" *ngFor="let product of favoriteProducts">
+               <!-- Product Image Container -->
+               <div class="product-image" (click)="navigateToProduct(product._id)">
+                    <img [src]="product.images?.[0]?.asset?.url" [alt]="product.title"
+                         onerror="this.src='assets/placeholder-image.jpg'" />
+
+                    <!-- Remove Favorite Button (replaces heart overlay) -->
+                    <button class="remove-favorite-btn" (click)="removeFavorite(product._id); $event.stopPropagation()"
+                         title="Remove from favorites">
+                         <i class="bi bi-heart-fill text-danger"></i>
+                    </button>
+               </div>
+
+               <!-- Product Information -->
+               <div class="product-info" (click)="navigateToProduct(product._id)">
+                    <h3>{{ product.title }}</h3>
+                    <span>{{product.description}}</span>
+                    <span>{{product.description}}</span>
+                    <span class="price">${{ product.price }}</span>
+               </div>
+
+               <!-- Add to Cart Button -->
+               <div class="product-actions">
+                    <button class="add-to-cart-btn" (click)="addToCart(product); $event.stopPropagation()">
+                         <i class="bi bi-cart-plus"></i> Add to Cart
+                    </button>
+               </div>
+          </div>
+     </div>
+
+     <div class="empty-favorites" *ngIf="favoriteProducts.length === 0">
+          <i class="bi bi-heart"></i>
+          <h3>No favorites yet</h3>
+          <p>Start browsing our wholesale catalog to add items to your favorites!</p>
+          <a routerLink="/wholesale" class="browse-btn">Wholesale Catalog</a>
+     </div>
+
+     <div class="loading" *ngIf="loading">
+          Loading your favorites...
+     </div>
+</div>
