@@ -4,7 +4,13 @@
      <div class="breadcrumb">
           <a routerLink="/wholesale">Wholesale Catalog</a> /
           <span>{{ product?.title }}</span>
-          </div>
+     </div>
+
+     <!-- Success/Error Messages -->
+     <div *ngIf="addedMessage" class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+          <i class="bi bi-check-circle me-2"></i>{{ addedMessage }}
+          <button type="button" class="btn-close" (click)="addedMessage = null" aria-label="Close"></button>
+     </div>
 
      <div class="product-detail-content">
           <!-- Product Images Section -->
@@ -21,8 +27,9 @@
                <div class="main-image">
                     <img [src]="product?.images[selectedImageIndex]?.asset.url" [alt]="product?.title"
                          class="main-product-image" />
-                         <div class="heart-icon" (click)="toggleFavorite()">
-                              <i [class]="isFavorite() ? 'bi bi-heart-fill text-danger' : 'bi bi-heart'"></i>                   </div>
+                    <div class="heart-icon" (click)="toggleFavorite()">
+                         <i [class]="isFavorite() ? 'bi bi-heart-fill text-danger' : 'bi bi-heart'"></i>
+                    </div>
                </div>
           </div>
 
@@ -32,6 +39,10 @@
 
                <div class="product-price">
                     <span class="price">${{ product?.price }}</span>
+                    <!-- Show total price when quantity > 1 -->
+                    <span *ngIf="quantity > 1" class="total-price">
+                         (Total: {{ getTotalPrice() }})
+                    </span>
                </div>
 
                <!-- Product Description -->
@@ -45,6 +56,17 @@
                     <p><strong>Type:</strong> {{ product?.type }}</p>
                </div>
 
+               <!-- Cart Status Information -->
+               <div *ngIf="isInCart$ | async" class="cart-status-info mb-3 p-3 bg-light rounded border">
+                    <div class="d-flex align-items-center">
+                         <i class="bi bi-check-circle-fill text-success me-2"></i>
+                         <span class="fw-semibold text-success">This item is in your cart</span>
+                    </div>
+                    <div *ngIf="cartItem$ | async as cartItem" class="mt-2 small text-muted">
+                         Current quantity in cart: {{ cartItem.quantity }}
+                    </div>
+               </div>
+
                <!-- Quantity Selector -->
                <div class="quantity-section">
                     <label for="quantity">Qty</label>
@@ -55,14 +77,31 @@
                     </div>
                </div>
 
-               <!-- Add to Cart Button -->
-               <button class="add-to-cart-btn" (click)="addToCart()">
-                    Add to Cart
-               </button>
+               <!-- Cart Action Buttons -->
+               <div class="cart-actions">
+                    <!-- Add to Cart Button (show when not in cart or user wants to add more) -->
+                    <button class="add-to-cart-btn" (click)="addToCart()" [disabled]="!product">
+                         <i class="bi bi-cart-plus me-2"></i>
+                         {{ (isInCart$ | async) ? 'Add More to Cart' : 'Add to Cart' }}
+                    </button>
+
+                    <!-- Cart Management Buttons (show when item is in cart) -->
+                    <div *ngIf="isInCart$ | async" class="cart-management-buttons mt-3">
+                         <button class="view-cart-btn me-2" (click)="goToCart()">
+                              <i class="bi bi-cart-check me-2"></i>
+                              View Cart
+                         </button>
+                         <button class="remove-from-cart-btn" (click)="removeFromCart()">
+                              <i class="bi bi-trash me-2"></i>
+                              Remove from Cart
+                         </button>
+                    </div>
+               </div>
 
                <!-- Back Button -->
                <button class="back-btn" (click)="goBack()">
-                    <i class="bi bi-arrow-left"></i> Back to Wholesale Catalog      </button>
+                    <i class="bi bi-arrow-left"></i> Back to Wholesale Catalog
+               </button>
           </div>
      </div>
 
@@ -78,4 +117,4 @@
 <div class="loading-container" *ngIf="loading">
      <div class="loading-spinner"></div>
      <p>Loading product details...</p>
-     </div>
+</div>
