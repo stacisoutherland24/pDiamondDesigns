@@ -6,7 +6,15 @@ import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FavoritesService } from '../../services/favorites.service';
-
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AppState } from '../../store/app.state';
+import * as CartActions from '../../store/cart/cart.actions';
+import {
+  selectCartItemById,
+  selectCartTotalItems,
+} from '../../store/cart/cart.selectors'; 
 @Component({
   selector: 'app-wholesale',
   standalone: true,
@@ -15,11 +23,20 @@ import { FavoritesService } from '../../services/favorites.service';
   styleUrl: './wholesale.component.css',
 })
 export class WholesaleComponent implements OnInit {
+  product: any = null;
+  selectedImageIndex: number = 0;
   // Authentication properties
   isAuthenticated = false;
+
+  quantity: number = 1;
   passwordInput = '';
   showError = false;
   private readonly correctPassword = 'Pdiamond!';
+
+  // NgRx observables
+  isInCart$: Observable<boolean>;
+  totalCartItems$: Observable<number>;
+  cartItem$: Observable<any>;
 
   featuredProduct: any = {
     title: 'Sample Product',
@@ -43,8 +60,16 @@ export class WholesaleComponent implements OnInit {
     private sanityService: SanityService,
     private router: Router,
     private authService: AuthService,
-    private favoritesService: FavoritesService
-  ) {}
+    private favoritesService: FavoritesService,
+    private store: Store<AppState>
+  ) {
+    // Initialize cart observables
+    this.totalCartItems$ = this.store.select(selectCartTotalItems);
+    this.isInCart$ = new Observable<boolean>((subscriber) =>
+      subscriber.next(false)
+    );
+    this.cartItem$ = new Observable((subscriber) => subscriber.next(null));
+  }
 
   ngOnInit(): void {
     this.isAuthenticated = this.authService.isLoggedIn;
@@ -76,11 +101,24 @@ export class WholesaleComponent implements OnInit {
       next: (products) => {
         this.products = products;
         this.filteredProducts = products;
+        // Initialize cart observables after product is loaded
+        this.initializeCartObservables();
       },
       error: (error) => {
         console.error('Error loading products:', error);
       },
     });
+  }
+  private initializeCartObservables(): void {
+    if (this.product?._id) {
+      // Check if product is in cart
+      this.isInCart$ = this.store
+        .select(selectCartItemById(this.product._id))
+        .pipe(map((item) => !!item));
+
+      // Get cart item details
+      this.cartItem$ = this.store.select(selectCartItemById(this.product._id));
+    }
   }
 
   checkPassword(): void {
@@ -89,7 +127,7 @@ export class WholesaleComponent implements OnInit {
       this.authService.login();
       this.showError = false;
       this.passwordInput = '';
-      this.loadProducts(); 
+      this.loadProducts();
     } else {
       this.showError = true;
       this.passwordInput = '';
@@ -120,16 +158,63 @@ export class WholesaleComponent implements OnInit {
     }
   }
 
-  addToCart(product: any, event?: Event): void {
-    if (event) {
-      event.stopPropagation();
+  addToCart(product: any): void {
+    if (!product) return;
+
+    const productForCart = {
+      id: product._id,
+      name: product.title,
+      title: product.title,
+      price: product.price,
+      description: product.description,
+      image: product.images?.[0]?.asset?.url || '', // Use first image
+    };
+
+    // Dispatch add to cart action for each quantity
+    for (let i = 0; i < this.quantity; i++) {
+      this.store.dispatch(CartActions.addToCart({ product: productForCart }));
     }
-    alert(`Added ${product.title} to cart!`);
+  }
+
+  // Helper method to check if product has images
+  hasImages(): boolean {
+    return this.product?.images && this.product.images.length > 0;
+  }
+
+  // Helper method to get current image URL
+  getCurrentImageUrl(): string {
+    if (this.hasImages()) {
+      return this.product.images[this.selectedImageIndex]?.asset?.url || '';
+    }
+    return '';
+  }
+
+  removeFromCart(): void {
+    if (this.product?._id) {
+      this.store.dispatch(
+        CartActions.removeFromCart({ productId: this.product._id })
+      );
+    }
+  }
+
+  updateCartQuantity(newQuantity: number): void {
+    if (this.product?._id && newQuantity > 0) {
+      this.store.dispatch(
+        CartActions.updateQuantity({
+          productId: this.product._id,
+          quantity: newQuantity,
+        })
+      );
+    }
+  }
+
+  goToCart(): void {
+    this.router.navigate(['/cart']);
   }
 
   logout(): void {
     this.isAuthenticated = false;
-    this.authService.logout(); 
+    this.authService.logout();
     this.passwordInput = '';
     this.showError = false;
     this.router.navigate(['/']);

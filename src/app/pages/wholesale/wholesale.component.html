@@ -78,9 +78,9 @@
 
                     <!-- Add to Cart Button -->
                     <div class="product-actions">
-                         <button class="add-to-cart-btn" (click)="addToCart(product, $event)">
-                              <i class="bi bi-cart-plus"></i> Add to Cart
-                         </button>
+                         <button class="add-to-cart-btn" (click)="addToCart(product)">
+                              <i class="bi bi-cart-plus me-2"></i>
+                              {{ (isInCart$ | async) ? 'Add More to Cart' : 'Add to Cart' }}                   </button>
                     </div>
                </div>
           </div>

@@ -4,6 +4,10 @@ import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FavoritesService } from '../../services/favorites.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from '../../store/app.state';
+import { selectCartTotalItems } from '../../store/cart/cart.selectors'; 
 
 @Component({
   selector: 'app-navbar',
@@ -14,12 +18,17 @@ import { FavoritesService } from '../../services/favorites.service';
 })
 export class NavbarComponent implements OnInit {
   loggedIn = false;
+  cartItemCount$: Observable<number>;
 
   constructor(
+    private store: Store<AppState>,
     private router: Router,
     private authService: AuthService,
     private favoritesService: FavoritesService
-  ) {}
+  ) {
+    // Subscribe to cart total items from NgRx store
+    this.cartItemCount$ = this.store.select(selectCartTotalItems);
+  }
 
   ngOnInit(): void {
     // Set initial state

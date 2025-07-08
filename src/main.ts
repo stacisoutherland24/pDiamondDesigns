@@ -7,15 +7,18 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { isDevMode } from '@angular/core';
+import { cartReducer } from './app/store/cart/cart.reducer';
 
 
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
-    provideNgxStripe('pk_test_51MKUZrFIGbwCUIy0OnSwPPQaOJbyal7tDwipac7YcQupNwbu9Kd3u9RpSWx8Qb9fWWKWrp4vfG6NyptY7ayFbK3a00OghXy9gO'),
-    provideStore(),
+    provideNgxStripe(
+      'pk_test_51MKUZrFIGbwCUIy0OnSwPPQaOJbyal7tDwipac7YcQupNwbu9Kd3u9RpSWx8Qb9fWWKWrp4vfG6NyptY7ayFbK3a00OghXy9gO'
+    ),
+    provideStore({ cart: cartReducer }),
     provideEffects(),
-    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
-],
+    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+  ],
 }).catch((err) => console.error(err));

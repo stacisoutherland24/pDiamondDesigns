@@ -48,8 +48,9 @@
             {
           <a href="#" class="cart-icon text-dark position-relative">
             <i class="bi bi-cart-fill"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
-              3
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
+              *ngIf="(cartItemCount$ | async)! > 0">
+              {{ cartItemCount$ | async }}
             </span>
           </a>
         
