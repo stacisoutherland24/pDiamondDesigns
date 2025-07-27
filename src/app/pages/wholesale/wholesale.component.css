@@ -4,7 +4,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 /* Header Section */
@@ -19,7 +19,7 @@
   margin-bottom: 30px;
   color: #333;
   letter-spacing: 1px;
-  font-family: 'Montserrat';
+  font-family: 'Playfair Display', serif;
 }
 
 /* Category Navigation */
@@ -377,7 +377,7 @@
   letter-spacing: 4px;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .password-subtitle {
@@ -482,7 +482,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 8px 25px rgba(95, 158, 160, 0.25);
-  font-family: 'Arial', sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .password-submit:hover {

@@ -103,7 +103,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: 'Ethereal';
+  font-family: 'Playfair Display', serif;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   font-size: 2.6rem;
   font-weight: 400;
@@ -232,19 +232,25 @@
   pointer-events: none;
 }
 
+/* Enhanced logo styling */
 .showroom-logo {
-  width: 350px;
-  margin: 2.5rem auto;
+  width: 320px;
+  margin: 0 auto 2rem;
   transition: all 0.4s ease;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.06));
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
   position: relative;
   z-index: 2;
+  display: block;
 }
 
 .showroom-logo:hover {
-  transform: scale(1.05) translateY(-2px);
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.1));
+  transform: scale(1.03) translateY(-3px);
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12));
 }
+
+
+
+
 
 .showroom-text2 {
   font-size: 1.5rem;
@@ -254,8 +260,43 @@
   font-size: 1.3rem;
 }
 
+/* Elegant divider */
+.elegant-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.elegant-divider::before,
+.elegant-divider::after {
+  content: '';
+  height: 1px;
+  background: linear-gradient(to right, 
+    transparent, 
+    rgba(95, 158, 160, 0.3) 20%, 
+    rgba(95, 158, 160, 0.3) 80%, 
+    transparent);
+  flex: 1;
+  max-width: 100px;
+}
+
+.divider-diamond {
+  color: #20B2AA;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+  opacity: 0.8;
+}
+
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
+
+  
+  .location-container {
+    padding: 2rem 1.5rem;
+  }
   .brand-title .main {
     letter-spacing: 0.2rem;
   }
@@ -271,9 +312,14 @@
   }
 
   .showroom-logo {
+    width: 260px;
+    margin: 0 auto 1.5rem;
+  }
+
+  /* .showroom-logo {
     width: 280px;
     margin: 1.5rem auto;
-  }
+  } */
 
   .showroom-text2 {
     font-size: 1.2rem;
@@ -319,13 +365,23 @@
 
 /* For very small screens (phones in portrait) */
 @media (max-width: 480px) {
+  
+  .elegant-divider::before,
+  .elegant-divider::after {
+    max-width: 60px;
+  }
+
+  
+  .location-container {
+    padding: 1.5rem 1rem;
+  }
   .showroom-section {
     padding: 1.5rem 1rem;
     margin: 1.5rem auto;
   }
 
   .showroom-logo {
-    width: 240px;
+    width: 220px;
   }
 
   .showroom-text2 {
@@ -402,4 +458,408 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+/* Location container */
+.location-container {
+  background: linear-gradient(135deg, 
+    rgba(95, 158, 160, 0.05) 0%, 
+    rgba(32, 178, 170, 0.05) 100%);
+  border: 1px solid rgba(95, 158, 160, 0.15);
+  
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  margin: 2rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Enhanced text styling */
+.showroom-text2 {
+  font-size: 1.2rem;
+  color: #2F4F4F;
+  font-weight: 400;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+.showroom-text3 {
+  font-size: 1.1rem;
+  color: #708090;
+  font-weight: 300;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+
+/* Enhanced Showroom Section - Elegant Design */
+.showroom-section {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 4rem 3rem;
+  text-align: center;
+  border-radius: 24px;
+  max-width: 70%;
+  margin: 4rem auto;
+  box-shadow: 
+    0 25px 50px rgba(95, 158, 160, 0.1),
+    0 10px 30px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(95, 158, 160, 0.15);
+  animation: fadeInUp 1s ease both;
+}
+
+/* Elegant top accent line */
+.showroom-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #5F9EA0, #20B2AA, #5F9EA0);
+  border-radius: 24px 24px 0 0;
+}
+
+/* Subtle background pattern */
+.showroom-section::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(95, 158, 160, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Diamond badge for showroom */
+.showroom-badge {
+  background: linear-gradient(135deg, 
+    rgba(95, 158, 160, 0.1) 0%, 
+    rgba(32, 178, 170, 0.1) 100%);
+  border: 2px solid rgba(95, 158, 160, 0.3);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0 auto 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: subtlePulse 4s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes subtlePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(95, 158, 160, 0.3); }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(95, 158, 160, 0.2); }
+}
+
+.badge-diamond {
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 1;
+  color: #20B2AA;
+  text-shadow: 0 0 10px rgba(32, 178, 170, 0.3);
+}
+
+.badge-text {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  line-height: 1;
+  margin-top: 2px;
+  color: #5F9EA0;
+  text-transform: uppercase;
+}
+
+/* Enhanced showroom title */
+.showroom-title {
+  color: #2F4F4F;
+  font-size: 2.2rem;
+  font-weight: 200;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+  position: relative;
+  z-index: 2;
+}
+
+.showroom-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #20B2AA, transparent);
+  animation: underlineGrow 1.5s ease-out 0.5s forwards;
+}
+
+/* Elegant description text */
+.showroom-description {
+  color: #708090;
+  font-size: 1.1rem;
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 3rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Location container */
+.location-container {
+  background: linear-gradient(135deg, 
+    rgba(95, 158, 160, 0.05) 0%, 
+    rgba(32, 178, 170, 0.05) 100%);
+  border: 1px solid rgba(95, 158, 160, 0.15);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  margin: 2rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Enhanced logo styling */
+.showroom-logo {
+  width: 320px;
+  margin: 0 auto 2rem;
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
+  position: relative;
+  z-index: 2;
+  display: block;
+}
+
+.showroom-logo:hover {
+  transform: scale(1.03) translateY(-3px);
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12));
+}
+
+/* Elegant divider */
+.elegant-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.elegant-divider::before,
+.elegant-divider::after {
+  content: '';
+  height: 1px;
+  background: linear-gradient(to right, 
+    transparent, 
+    rgba(95, 158, 160, 0.3) 20%, 
+    rgba(95, 158, 160, 0.3) 80%, 
+    transparent);
+  flex: 1;
+  max-width: 100px;
+}
+
+.divider-diamond {
+  color: #20B2AA;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+  opacity: 0.8;
+}
+
+/* Vendor information box */
+.vendor-info {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(95, 158, 160, 0.2);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 400px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 8px 20px rgba(95, 158, 160, 0.1);
+}
+
+.vendor-info::before {
+  content: "◊";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  color: #20B2AA;
+  font-size: 1.5rem;
+  padding: 0 12px;
+}
+
+.vendor-name {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #2F4F4F;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  font-family: 'Playfair Display', serif;
+}
+
+.vendor-location {
+  font-size: 1rem;
+  color: #708090;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* Enhanced text styling */
+.showroom-text2 {
+  font-size: 1.2rem;
+  color: #2F4F4F;
+  font-weight: 400;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+.showroom-text3 {
+  font-size: 1.1rem;
+  color: #708090;
+  font-weight: 300;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Professional visit info */
+.visit-info {
+  color: #708090;
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-top: 1px solid rgba(95, 158, 160, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+/* Contact button */
+.contact-link {
+  display: inline-block;
+  background: linear-gradient(135deg, #5F9EA0 0%, #20B2AA 100%);
+  color: white;
+  text-decoration: none;
+  padding: 12px 32px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
+  box-shadow: 0 6px 20px rgba(95, 158, 160, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.contact-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(95, 158, 160, 0.4);
+  color: white;
+  text-decoration: none;
+  background: linear-gradient(135deg, #20B2AA 0%, #48D1CC 100%);
+}
+
+/* Mobile Responsive Enhancements */
+@media (max-width: 768px) {
+  .showroom-section {
+    max-width: 95%;
+    padding: 2.5rem 1.5rem;
+    margin: 2rem auto;
+  }
+
+  .showroom-badge {
+    width: 70px;
+    height: 70px;
+  }
+
+  .badge-diamond {
+    font-size: 1.4rem;
+  }
+
+  .badge-text {
+    font-size: 0.6rem;
+  }
+
+  .showroom-title {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+
+  .showroom-logo {
+    width: 260px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .location-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .vendor-info {
+    padding: 1.2rem;
+    max-width: 100%;
+  }
+
+  .vendor-name {
+    font-size: 1.2rem;
+  }
+
+  .showroom-text2 {
+    font-size: 1.1rem;
+  }
+
+  .showroom-text3 {
+    font-size: 1rem;
+  }
+
+  .contact-link {
+    padding: 10px 24px;
+    font-size: 0.85rem;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  .showroom-section {
+    padding: 2rem 1rem;
+    margin: 1.5rem auto;
+  }
+
+  .showroom-logo {
+    width: 220px;
+  }
+
+  .showroom-title {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .location-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .vendor-name {
+    font-size: 1.1rem;
+  }
+
+  .elegant-divider::before,
+  .elegant-divider::after {
+    max-width: 60px;
+  }
 }

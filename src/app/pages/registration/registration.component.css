@@ -125,7 +125,7 @@ label {
   border-radius: 10px;
   max-width: 1000vh;
   margin: 20px; /* Remove 'auto' to prevent centering */
-  font-family: "Futura PT", "Helvetica Neue", sans-serif;
+  font-family: 'Playfair Display', serif;
   line-height: 1.8;
   text-align: left; /* Ensure everything starts from the left */
 }

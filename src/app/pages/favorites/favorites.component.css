@@ -3,7 +3,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 /* Header Section */
@@ -18,7 +18,7 @@
   margin-bottom: 30px;
   color: #333;
   letter-spacing: 1px;
-  font-family: 'Montserrat';
+  font-family: 'Playfair Display', serif;
 }
 
 .favorites-header p {
@@ -298,5 +298,6 @@
   .empty-favorites h3 {
     font-size: 20px;
   }
+
 }
 
