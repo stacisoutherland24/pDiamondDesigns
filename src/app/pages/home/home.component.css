@@ -37,6 +37,7 @@
   text-align: center;
   font-family: 'Playfair Display', serif;
   margin: 40px 0;
+  color: #20B2AA 100%;
   position: relative;
   padding: 2rem;
   animation: titleEntrance 1.5s ease-out;
@@ -47,9 +48,8 @@
 
 .brand-title .main {
   font-size: clamp(2rem, 4vw, 3rem);
-  letter-spacing: 0.4rem;
-  font-weight: 300;
-  color: #2b2b2b;
+  letter-spacing: 0.3rem;
+  font-weight: 100;
   position: relative;
   display: inline-block;
   margin-bottom: 0.5rem;
@@ -92,6 +92,7 @@
 
 /* Green Title */
 .green-title {
+  background: linear-gradient(90deg, transparent, #20B2AA, transparent);
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -99,7 +100,6 @@
   letter-spacing: 1px;
   line-height: 1.4;
   margin-bottom: 2rem;
-  background: linear-gradient(to right, #1f8077, #60c6b1);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -284,7 +284,7 @@
 }
 
 .divider-diamond {
-  color: #20B2AA;
+  color:#60c6b1;
   font-size: 1.2rem;
   margin: 0 1rem;
   opacity: 0.8;
@@ -462,9 +462,7 @@
 
 /* Location container */
 .location-container {
-  background: linear-gradient(135deg, 
-    rgba(95, 158, 160, 0.05) 0%, 
-    rgba(32, 178, 170, 0.05) 100%);
+  background:#60c6b1;
   border: 1px solid rgba(95, 158, 160, 0.15);
   
   border-radius: 20px;
@@ -520,7 +518,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #5F9EA0, #20B2AA, #5F9EA0);
+  color: #708090;
   border-radius: 24px 24px 0 0;
 }
 
@@ -580,7 +578,7 @@
 
 /* Enhanced showroom title */
 .showroom-title {
-  color: #2F4F4F;
+  color: black;
   font-size: 2.2rem;
   font-weight: 200;
   letter-spacing: 3px;
@@ -605,7 +603,7 @@
 
 /* Elegant description text */
 .showroom-description {
-  color: #708090;
+ 
   font-size: 1.1rem;
   font-weight: 300;
   font-style: italic;
