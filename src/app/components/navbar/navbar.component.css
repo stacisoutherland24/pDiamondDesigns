@@ -19,34 +19,15 @@
 }
 
 /* ================================================
-   MOBILE ICONS (ADD THIS SECTION)
+   USER ICONS
    ================================================ */
 
-/* Mobile icons container - hidden by default */
-.mobile-icons {
+.user-icons {
   display: none;
-  align-items: center;
-  gap: 1rem;
-  margin-left: auto;
-  margin-right: 1rem; /* Add space between icons and burger button */
 }
 
-.mobile-icons .cart-icon,
-.mobile-icons .favorites-link {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  transition: background-color 0.2s ease;
-  text-decoration: none;
-}
-
-.mobile-icons .cart-icon:hover,
-.mobile-icons .favorites-link:hover {
-  background-color: rgba(0, 123, 255, 0.1);
+.mobile-user-icons {
+  display: none;
 }
 
 /* ================================================
@@ -143,6 +124,7 @@
   font-weight: 500;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  margin-left: 1rem;
 }
 
 .login-btn:hover {
@@ -238,7 +220,12 @@
    ================================================ */
 
 @media (min-width: 992px) {
-  
+  .user-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
 /* Style the logo */
 .logo {
   height: 2.0in;
@@ -257,9 +244,12 @@
    ================================================ */
 
 @media (max-width: 991.98px) {
-  /* Show mobile icons when logged in and on mobile - MOVED TO PROPER LOCATION */
-  .mobile-icons {
-    display: flex !important;
+  .mobile-user-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+    margin-right: 1rem;
   }
 
   .logo {
