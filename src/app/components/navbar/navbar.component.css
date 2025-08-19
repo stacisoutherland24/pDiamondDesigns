@@ -19,20 +19,20 @@
 }
 
 /* ================================================
-   MOBILE ICONS (ADD THIS SECTION)
+   USER ICONS
    ================================================ */
 
-/* Mobile icons container - hidden by default */
-.mobile-icons {
-  display: none;
+/* User icons container */
+.user-icons {
+  display: flex;
   align-items: center;
   gap: 1rem;
   margin-left: auto;
   margin-right: 1rem; /* Add space between icons and burger button */
 }
 
-.mobile-icons .cart-icon,
-.mobile-icons .favorites-link {
+.user-icons .cart-icon,
+.user-icons .favorites-link {
   position: relative;
   display: flex;
   align-items: center;
@@ -44,8 +44,8 @@
   text-decoration: none;
 }
 
-.mobile-icons .cart-icon:hover,
-.mobile-icons .favorites-link:hover {
+.user-icons .cart-icon:hover,
+.user-icons .favorites-link:hover {
   background-color: rgba(0, 123, 255, 0.1);
 }
 
@@ -257,10 +257,7 @@
    ================================================ */
 
 @media (max-width: 991.98px) {
-  /* Show mobile icons when logged in and on mobile - MOVED TO PROPER LOCATION */
-  .mobile-icons {
-    display: flex !important;
-  }
+  
 
   .logo {
     height: 1.2in;
