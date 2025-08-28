@@ -3,7 +3,8 @@
   <div class="hero-section text-center">
     <div class="container">
       <h1 class="hero-title" animateOnScroll>Get in Touch</h1>
-      <p class="hero-subtitle" animateOnScroll>We'd love to hear from you. Reach out with any questions or for assistance with your order.</p>
+      <p class="hero-subtitle" animateOnScroll>We'd love to hear from you. Reach out with any questions or for
+        assistance with your order.</p>
     </div>
   </div>
 
@@ -15,30 +16,63 @@
         <div class="col-lg-7 mb-5 mb-lg-0">
           <div class="contact-card form-section">
             <h3>Send a Message</h3>
-            <form>
+
+            <!-- Success Message -->
+            <div *ngIf="isSubmitted" class="alert alert-success" role="alert">
+              <i class="bi bi-check-circle-fill me-2"></i>
+              Thank you! Your message has been sent successfully. We'll get back to you soon.
+            </div>
+
+            <!-- Error Message -->
+            <div *ngIf="submitError" class="alert alert-danger" role="alert">
+              <i class="bi bi-exclamation-triangle-fill me-2"></i>
+              Sorry, there was an error sending your message. Please try again or contact us directly.
+            </div>
+
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" id="firstName" class="form-control" placeholder="Enter first name" required>
+                    <label for="firstName" class="form-label">First Name *</label>
+                    <input type="text" id="firstName" formControlName="firstName" class="form-control"
+                      [class.is-invalid]="hasFieldError('firstName')" placeholder="Enter first name">
+                    <div *ngIf="hasFieldError('firstName')" class="invalid-feedback">
+                      {{ getFieldError('firstName') }}
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" id="lastName" class="form-control" placeholder="Enter last name">
+                    <input type="text" id="lastName" formControlName="lastName" class="form-control"
+                      placeholder="Enter last name">
                   </div>
                 </div>
               </div>
+
               <div class="form-group">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" id="email" class="form-control" placeholder="your.email@example.com" required>
+                <label for="email" class="form-label">Email Address *</label>
+                <input type="email" id="email" formControlName="email" class="form-control"
+                  [class.is-invalid]="hasFieldError('email')" placeholder="your.email@example.com">
+                <div *ngIf="hasFieldError('email')" class="invalid-feedback">
+                  {{ getFieldError('email') }}
+                </div>
               </div>
+
               <div class="form-group">
-                <label for="message" class="form-label">Message</label>
-                <textarea id="message" class="form-control" rows="6" placeholder="How can we help you today?" required></textarea>
+                <label for="message" class="form-label">Message *</label>
+                <textarea id="message" formControlName="message" class="form-control"
+                  [class.is-invalid]="hasFieldError('message')" rows="6"
+                  placeholder="How can we help you today?"></textarea>
+                <div *ngIf="hasFieldError('message')" class="invalid-feedback">
+                  {{ getFieldError('message') }}
+                </div>
               </div>
-              <button type="submit" class="btn btn-custom">Submit Message</button>
+
+              <button type="submit" class="btn btn-custom" [disabled]="isSubmitting">
+                <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2" role="status"></span>
+                {{ isSubmitting ? 'Sending...' : 'Submit Message' }}
+              </button>
             </form>
           </div>
         </div>
@@ -66,10 +100,12 @@
       <!-- Return Policy Section -->
       <div class="return-policy">
         <h4>Return & Exchange Policy</h4>
-        <p class="lead">Your satisfaction is our priority. Please review your order upon receipt and contact us if you have any concerns.</p>
-        
+        <p class="lead">Your satisfaction is our priority. Please review your order upon receipt and contact us if you
+          have any concerns.</p>
+
         <div class="policy-highlight">
-          <strong>7-Day Claim Period:</strong> All claims for damages or shortages must be made within 7 days of receiving your order.
+          <strong>7-Day Claim Period:</strong> All claims for damages or shortages must be made within 7 days of
+          receiving your order.
         </div>
 
         <div class="row mt-4">

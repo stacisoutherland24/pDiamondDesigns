@@ -22,24 +22,22 @@ export class ContactComponent implements OnInit {
   isSubmitted = false;
   submitError = false;
 
-  // EmailJS configuration - Replace these with your actual values
-  private readonly EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-  private readonly EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-  private readonly EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+  // EmailJS configuration - Replace with your actual values
+  private readonly EMAILJS_SERVICE_ID = 'service_flyublo'; // e.g., 'service_abc123'
+  private readonly EMAILJS_TEMPLATE_ID = 'template_co5qyic'; // e.g., 'template_xyz789'
+  private readonly EMAILJS_PUBLIC_KEY = 'ZUPKV5diK_sUhR9bF'; // e.g., 'user_abcdef123456'
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: [''],
       email: ['', [Validators.required, Validators.email]],
-      phone: [''],
-      subject: [''],
       message: ['', [Validators.required, Validators.minLength(10)]],
     });
   }
 
   ngOnInit(): void {
-    // Initialize EmailJS
+    // Initialize EmailJS with your public key
     emailjs.init(this.EMAILJS_PUBLIC_KEY);
   }
 
@@ -58,8 +56,7 @@ export class ContactComponent implements OnInit {
           this.contactForm.value.lastName || ''
         }`.trim(),
         from_email: this.contactForm.value.email,
-        phone: this.contactForm.value.phone || 'Not provided',
-        subject: this.contactForm.value.subject || 'Contact Form Submission',
+        subject: 'P Diamond Designs Contact Form',
         message: this.contactForm.value.message,
         to_email: 'kerry@pdiamonddesigns.com',
         reply_to: this.contactForm.value.email,
@@ -83,7 +80,7 @@ export class ContactComponent implements OnInit {
             this.isSubmitting = false;
             this.isSubmitted = true;
 
-            // Reset form after success message
+            // Reset form after 3 seconds
             setTimeout(() => {
               this.isSubmitted = false;
               this.contactForm.reset();
