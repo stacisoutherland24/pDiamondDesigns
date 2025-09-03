@@ -56,7 +56,7 @@
                     <p><strong>Type:</strong> {{ product?.type }}</p>
                </div>
 
-               <!-- Cart Status Information -->
+             <!--   Cart Status Information
                <div *ngIf="isInCart$ | async" class="cart-status-info mb-3 p-3 bg-light rounded border">
                     <div class="d-flex align-items-center">
                          <i class="bi bi-check-circle-fill text-success me-2"></i>
@@ -65,9 +65,9 @@
                     <div *ngIf="cartItem$ | async as cartItem" class="mt-2 small text-muted">
                          Current quantity in cart: {{ cartItem.quantity }}
                     </div>
-               </div>
+               </div> -->
 
-               <!-- Quantity Selector -->
+            <!--     Quantity Selector 
                <div class="quantity-section">
                     <label for="quantity">Qty</label>
                     <div class="quantity-controls">
@@ -75,17 +75,17 @@
                          <input type="number" id="quantity" [(ngModel)]="quantity" min="1" readonly>
                          <button type="button" (click)="increaseQuantity()">+</button>
                     </div>
-               </div>
+               </div> -->
 
                <!-- Cart Action Buttons -->
-               <div class="cart-actions">
-                    <!-- Add to Cart Button (show when not in cart or user wants to add more) -->
+               <!-- <div class="cart-actions">
+                     Add to Cart Button (show when not in cart or user wants to add more) 
                     <button class="add-to-cart-btn" (click)="addToCart()" [disabled]="!product">
                          <i class="bi bi-cart-plus me-2"></i>
                          {{ (isInCart$ | async) ? 'Add More to Cart' : 'Add to Cart' }}
                     </button>
 
-                    <!-- Cart Management Buttons (show when item is in cart) -->
+                     Cart Management Buttons (show when item is in cart) 
                     <div *ngIf="isInCart$ | async" class="cart-management-buttons mt-3">
                          <button class="view-cart-btn me-2" (click)="goToCart()">
                               <i class="bi bi-cart-check me-2"></i>
@@ -96,7 +96,7 @@
                               Remove from Cart
                          </button>
                     </div>
-               </div>
+               </div> -->
 
                <!-- Back Button -->
                <button class="back-btn" (click)="goBack()">
