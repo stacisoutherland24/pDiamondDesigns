@@ -1,0 +1,55 @@
+<!-- cart.component.html -->
+<div class="cart-container">
+  <!-- Header Section -->
+  <div class="cart-header">
+    <h1>Shopping Cart</h1>
+    <p *ngIf="(cartItems$ | async)?.length">Review your items and proceed to checkout.</p>
+  </div>
+
+  <!-- Cart Items -->
+  <div *ngIf="(cartItems$ | async)?.length > 0; else emptyCart">
+    <div class="cart-items-grid">
+      <!-- Cart Item -->
+      <div class="cart-item" *ngFor="let item of (cartItems$ | async)">
+        <div class="item-image">
+          <img [src]="item.images?.[0]?.asset?.url" [alt]="item.title">
+        </div>
+        <div class="item-details">
+          <h3>{{ item.title }}</h3>
+          <p class="price">${{ item.price }}</p>
+          <div class="quantity-controls">
+            <button (click)="decrementQuantity(item)">-</button>
+            <input type="number" [value]="item.quantity" readonly>
+            <button (click)="incrementQuantity(item)">+</button>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="remove-btn" (click)="removeFromCart(item)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Summary -->
+    <div class="cart-summary">
+      <div class="summary-details">
+        <h2>Cart Total: <strong>${{ (total$ | async) | number:'1.2-2' }}</strong></h2>
+        <p>Shipping & taxes calculated at checkout.</p>
+      </div>
+      <div class="summary-actions">
+        <button class="checkout-btn">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty Cart Template -->
+  <ng-template #emptyCart>
+    <div class="empty-cart-container">
+      <i class="bi bi-cart-x"></i>
+      <h2>Your Cart is Empty</h2>
+      <p>Looks like you haven't added anything to your cart yet.</p>
+      <a routerLink="/wholesale" class="browse-btn">Browse Products</a>
+    </div>
+  </ng-template>
+</div>
