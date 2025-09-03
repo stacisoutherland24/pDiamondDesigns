@@ -7,13 +7,13 @@
     </a>
     <div class="mobile-user-icons user-only">
       @if (loggedIn) {
-      <a routerLink="/cart" class="cart-icon text-dark " (click)="closeNavbar()">
+      <!-- <a routerLink="/cart" class="cart-icon text-dark " (click)="closeNavbar()">
         <i class="bi bi-cart-fill"></i>
         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
           *ngIf="(cartItemCount$ | async)! > 0">
           {{ cartItemCount$ | async }}
         </span>
-      </a>
+      </a> -->
       
       <a routerLink="/favorites" class="favorites-link " (click)="closeNavbar()">
         <i class="bi bi-heart"></i>
@@ -61,13 +61,13 @@
 
           <div class="user-icons user-only">
             @if (loggedIn) {
-            <a routerLink="/cart" class="cart-icon text-dark " (click)="closeNavbar()">
+            <!-- <a routerLink="/cart" class="cart-icon text-dark " (click)="closeNavbar()">
               <i class="bi bi-cart-fill"></i>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
                 *ngIf="(cartItemCount$ | async)! > 0">
                 {{ cartItemCount$ | async }}
               </span>
-            </a>
+            </a> -->
             
             <a routerLink="/favorites" class="favorites-link " (click)="closeNavbar()">
               <i class="bi bi-heart"></i>

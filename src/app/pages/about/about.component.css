@@ -15,7 +15,7 @@
 .hero-section {
   background: linear-gradient(135deg, #5a9d95 0%, #7bb3ac 100%);
   color: white;
-  padding: 6rem 0;
+  padding: 4rem 0;
   margin-bottom: -4rem; /* Overlap with the section below */
   position: relative;
   z-index: 1;
