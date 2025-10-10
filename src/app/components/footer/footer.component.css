@@ -1,10 +1,11 @@
 .footer {
   padding: 20px 0; /* Ensure enough space */
   width: 100%;
+  max-width: 100vw;
   text-align: center;
   position: relative;
   font-family: "Playfair Display", serif;
-
+  overflow-x: hidden;
 }
 
 .footer-logo {
