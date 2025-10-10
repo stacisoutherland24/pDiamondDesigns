@@ -413,8 +413,16 @@
   height: 100%;
   object-fit: cover;
   object-position: center 90%;
-
   display: block;
+}
+
+/* Show desktop image by default, hide mobile */
+.desktop-hero {
+  display: block;
+}
+
+.mobile-hero {
+  display: none;
 }
 .girl-section {
   width: 100vw;
@@ -777,12 +785,17 @@
 /* Mobile Responsive Enhancements */
 @media (max-width: 768px) {
   .hero-section {
-    height: 40vh; /* Make it full screen on mobile */
+    height: 50vh;
   }
-  
-  .hero-image {
-    object-position: center 50%; /* Show center of image instead of bottom 90% */
-    /* This will show much more of your mountain landscape */
+
+  /* Hide desktop hero, show mobile hero */
+  .desktop-hero {
+    display: none;
+  }
+
+  .mobile-hero {
+    display: block;
+    object-position: center 20%;
   }
   .showroom-section {
     max-width: 95%;
