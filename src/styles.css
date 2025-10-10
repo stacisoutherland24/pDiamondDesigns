@@ -12,11 +12,7 @@ body {
 
 body {
   font-family: "Playfair Display", serif;
-<<<<<<< HEAD
-  padding-top: 100px; /* Offset for fixed navbar on desktop */
-=======
   padding-top: 140px; /* Offset for fixed navbar */
->>>>>>> origin/main
 }
 
 /* Ensure all containers respect viewport width */
@@ -35,11 +31,9 @@ body {
 /* Adjust padding for mobile navbar */
 @media (max-width: 991.98px) {
   body {
-<<<<<<< HEAD
-    padding-top: 110px; /* Offset for mobile navbar */
-=======
+
     padding-top: 120px;
->>>>>>> origin/main
+
   }
 } 
 
