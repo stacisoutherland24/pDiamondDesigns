@@ -4,23 +4,28 @@
 
 /* Set the height of the navbar */
 .navbar {
-  background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+  background-color: #ffffff;
   font-family: "Playfair Display", serif;
-  height: 140px;
+  height: 100px;
   display: flex;
   align-items: center;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1030;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   padding: 0.5rem 0;
   transition: all 0.3s ease;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Style the logo */
 .logo {
-  height: 120px;
+  height: 150px;
   width: auto;
   transition: all 0.3s ease;
 }
@@ -46,7 +51,6 @@
    NAVIGATION LINKS
    ================================================ */
 
-/* Navigation Links */
 .nav-link {
   font-size: 1.1rem;
   color: #2c3e50;
@@ -80,13 +84,6 @@
 /* ================================================
    NAVBAR ICONS & BUTTONS
    ================================================ */
-
-/* Icon Container */
-.navbar-icons {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
 
 /* Cart and Favorites Icons */
 .cart-icon,
@@ -131,11 +128,6 @@
   justify-content: center !important;
   line-height: 1 !important;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-.bg-danger {
-  background: linear-gradient(135deg, #5F9EA0, #20B2AA) !important;
-  color: white !important;
 }
 
 /* Hover Effects */
@@ -185,37 +177,10 @@
   box-shadow: 0 2px 6px rgba(95, 158, 160, 0.25);
 }
 
-/* Password Submit Button */
-.password-submit {
-  width: 100%;
-  padding: 1.2rem 2rem;
-  background: linear-gradient(135deg, #5F9EA0 0%, #20B2AA 100%);
-  border: none;
-  border-radius: 50px;
-  color: white;
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 2px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(95, 158, 160, 0.25);
-}
-
-.password-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(95, 158, 160, 0.35);
-  background: linear-gradient(135deg, #20B2AA 0%, #48D1CC 100%);
-}
-
-.password-submit:active {
-  transform: translateY(0);
-}
-
 /* ================================================
    MOBILE NAVBAR TOGGLER
    ================================================ */
 
-/* Mobile Navbar Toggler Styling */
 .navbar-toggler {
   border: 2px solid rgba(95, 158, 160, 0.3);
   border-radius: 8px;
@@ -252,9 +217,12 @@
    NAVBAR COLLAPSE BEHAVIOR
    ================================================ */
 
-/* Base Navbar Collapse */
 .navbar-collapse {
   transition: all 0.3s ease-in-out;
+}
+
+.navbar-collapse.collapse:not(.show) {
+  display: none;
 }
 
 .navbar-collapse.show {
@@ -277,9 +245,8 @@
     gap: 1.25rem;
   }
 
-  /* Style the logo */
   .logo {
-    height: 120px;
+    height: 80px;
     max-width: 100%;
   }
 
@@ -288,10 +255,21 @@
     background-color: transparent;
     border: none;
     box-shadow: none;
+    display: flex !important;
+    overflow: visible;
   }
 
   .navbar-nav {
     gap: 0.5rem;
+  }
+
+  .navbar {
+    overflow-x: visible;
+    overflow-y: visible;
+  }
+
+  .container {
+    overflow: visible;
   }
 }
 
@@ -309,23 +287,43 @@
   }
 
   .logo {
-    height: 1.2in;
+    height: 70px;
     max-width: 100%;
     width: auto;
   }
 
-  /* Force the navbar to expand its height when menu is open */
+  /* Compact mobile navbar */
+  .navbar {
+    height: 80px;
+    padding: 0 !important;
+  }
+
   .navbar.navbar-expand-lg {
-    min-height: 120px;
+    min-height: 80px;
     height: auto;
     flex-wrap: wrap;
   }
 
-  /* Mobile navbar collapse - block display pushes content down */
+  .navbar .container {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-toggler {
+    padding: 6px 10px;
+    margin: 0;
+  }
+
+  /* Mobile navbar collapse */
   .navbar-collapse {
     position: relative;
     width: 100%;
-    background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+    background-color: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-top: 2px solid #20B2AA;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -370,9 +368,9 @@
     background-color: rgba(95, 158, 160, 0.1);
     color: #20B2AA;
   }
-  
-  /* Mobile icons and buttons */
-  .navbar-icons {
+
+  /* Mobile icons and buttons container */
+  .user-icons {
     width: 100%;
     justify-content: center;
     gap: 1.5rem;
@@ -380,12 +378,12 @@
     padding: 1rem;
     border-top: 1px solid #dee2e6;
   }
-  
+
   .login-btn {
     min-width: 120px;
     justify-content: center;
   }
-  
+
   /* Stack layout for mobile */
   .d-flex.justify-content-between {
     flex-direction: column !important;
@@ -396,12 +394,12 @@
   .navbar-collapse.collapse:not(.show) {
     display: none;
   }
-  
+
   .navbar-collapse.collapse.show {
     display: block !important;
     animation: slideDown 0.3s ease-in-out;
   }
-  
+
   @keyframes slideDown {
     from {
       opacity: 0;
