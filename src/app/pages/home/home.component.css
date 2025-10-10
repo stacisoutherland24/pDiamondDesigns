@@ -163,6 +163,8 @@
   padding: 24px;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .image-box {
@@ -293,14 +295,14 @@
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
 
-  
+
   .location-container {
     padding: 2rem 1.5rem;
   }
   .brand-title .main {
     letter-spacing: 0.2rem;
   }
-  
+
   .brand-title .sub {
     letter-spacing: 0.25rem;
   }
@@ -361,17 +363,25 @@
   .image-box {
     max-width: 100%;
   }
+
+  /* Mobile-specific jewelry grid styling */
+  .jewelry-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+    width: 100%;
+  }
 }
 
 /* For very small screens (phones in portrait) */
 @media (max-width: 480px) {
-  
+
   .elegant-divider::before,
   .elegant-divider::after {
     max-width: 60px;
   }
 
-  
+
   .location-container {
     padding: 1.5rem 1rem;
   }
@@ -395,6 +405,21 @@
   .green-title {
     font-size: 2rem;
   }
+
+  /* Extra small screen jewelry grid adjustments */
+  .jewelry-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .image-box {
+    padding: 12px;
+  }
+
+  .image-box img {
+    height: 240px;
+  }
 }
 
 
@@ -416,13 +441,19 @@
   display: block;
 }
 
-/* Show desktop image by default, hide mobile */
-.desktop-hero {
-  display: block;
-}
-
-.mobile-hero {
+/* Mobile hero image - different image */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/girlImage5.png');
+  background-size: cover;
+  background-position: center;
   display: none;
+  z-index: 1;
 }
 .girl-section {
   width: 100vw;
@@ -784,18 +815,18 @@
 
 /* Mobile Responsive Enhancements */
 @media (max-width: 768px) {
-  .hero-section {
-    height: 50vh;
-  }
-
-  /* Hide desktop hero, show mobile hero */
-  .desktop-hero {
+  /* Hide the original mountains image */
+  .hero-image {
     display: none;
   }
 
-  .mobile-hero {
+  /* Show the girl image overlay on mobile */
+  .hero-section::before {
     display: block;
-    object-position: center 20%;
+  }
+
+  .hero-section {
+    height: 50vh;
   }
   .showroom-section {
     max-width: 95%;

@@ -309,8 +309,9 @@
   }
 
   .logo {
-    height: 100px;
+    height: 1.2in;
     max-width: 100%;
+    width: auto;
   }
 
   /* Force the navbar to expand its height when menu is open */

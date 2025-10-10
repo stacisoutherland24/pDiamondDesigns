@@ -1,8 +1,30 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
- body {
-  font-family: "Playfair Display", serif;
 
+/* Prevent horizontal scrolling on mobile */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+body {
+  font-family: "Playfair Display", serif;
+}
+
+/* Ensure all containers respect viewport width */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent Bootstrap containers from causing overflow */
+.container,
+.container-fluid,
+.row {
+  max-width: 100%;
+  overflow-x: hidden;
 } 
 
 
