@@ -12,6 +12,7 @@ body {
 
 body {
   font-family: "Playfair Display", serif;
+  padding-top: 140px; /* Offset for fixed navbar */
 }
 
 /* Ensure all containers respect viewport width */
@@ -25,6 +26,13 @@ body {
 .row {
   max-width: 100%;
   overflow-x: hidden;
+}
+
+/* Adjust padding for mobile navbar */
+@media (max-width: 991.98px) {
+  body {
+    padding-top: 120px;
+  }
 } 
 
 
