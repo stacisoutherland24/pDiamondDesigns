@@ -25,7 +25,7 @@
 
 /* Style the logo */
 .logo {
-  height: 150px;
+  height: 120px;
   width: auto;
   transition: all 0.3s ease;
 }
@@ -246,7 +246,7 @@
   }
 
   .logo {
-    height: 80px;
+    height: 60px;
     max-width: 100%;
   }
 
@@ -287,7 +287,7 @@
   }
 
   .logo {
-    height: 70px;
+    height: 60px;
     max-width: 100%;
     width: auto;
   }
