@@ -112,7 +112,6 @@
 /* Count Badges */
 .position-absolute.badge {
   position: absolute !important;
-  top: -5px !important;
   right: -5px !important;
   background: linear-gradient(135deg, #5F9EA0, #20B2AA) !important;
   color: white !important;
