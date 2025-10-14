@@ -12,7 +12,7 @@ body {
 
 body {
   font-family: "Playfair Display", serif;
-  padding-top: 140px; /* Offset for fixed navbar */
+  padding-top: 80px; /* Offset for fixed navbar */
 }
 
 /* Ensure all containers respect viewport width */
