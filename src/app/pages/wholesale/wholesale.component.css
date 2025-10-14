@@ -3,14 +3,12 @@
 .wholesale-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
   font-family: 'Playfair Display', serif;
 }
 
 /* Header Section */
 .header-section {
   text-align: center;
-  margin-bottom: 40px;
 }
 
 .main-title {
@@ -610,3 +608,27 @@
   50% { transform: scale(1.05); }
 }
 
+
+@media (max-width: 768px) {
+  .main-title {
+    display: none;
+  }
+  
+  .header-section {
+    margin-bottom: -20px; /* Reduce spacing */
+  }
+  
+  .category-navigation {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+    margin-top: -10px; /* Remove top margin */
+    border-bottom: 2px solid #eee;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+}
