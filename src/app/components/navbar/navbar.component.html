@@ -36,22 +36,22 @@
       <!-- Full-width Flexbox Container -->
       <div class="d-flex justify-content-between align-items-center w-100">
         <!-- Center Nav Links - ADDED (click)="closeNavbar()" TO EACH LINK -->
-        <ul class="navbar-nav mx-auto text-center gap-3">
+        <ul class="navbar-nav mx-auto text-center">
           <li class="nav-item">
-            <a class="nav-link fw-medium" routerLink="/" (click)="closeNavbar()">Home</a>
+            <a class="nav-link" routerLink="/" (click)="closeNavbar()">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium" routerLink="/about" (click)="closeNavbar()">About</a>
+            <a class="nav-link" routerLink="/about" (click)="closeNavbar()">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium" routerLink="/contact" (click)="closeNavbar()">Contact</a>
+            <a class="nav-link" routerLink="/contact" (click)="closeNavbar()">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium" routerLink="/wholesale" (click)="closeNavbar()">Wholesale</a>
+            <a class="nav-link" routerLink="/wholesale" (click)="closeNavbar()">Wholesale</a>
           </li>
           @if (!loggedIn) {
           <li class="nav-item">
-            <a class="nav-link fw-medium" routerLink="/registration" (click)="closeNavbar()">Registration</a>
+            <a class="nav-link" routerLink="/registration" (click)="closeNavbar()">Registration</a>
           </li>
           }
         </ul>
