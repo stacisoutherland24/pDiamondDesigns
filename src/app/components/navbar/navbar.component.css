@@ -25,7 +25,7 @@
 
 /* Style the logo */
 .logo {
-  height: 120px;
+  height: 75px;
   width: auto;
   transition: all 0.3s ease;
 }
@@ -245,10 +245,7 @@
     gap: 1.25rem;
   }
 
-  .logo {
-    height: 60px;
-    max-width: 100%;
-  }
+
 
   .navbar-collapse {
     position: static;
