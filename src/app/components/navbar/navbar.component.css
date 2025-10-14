@@ -175,6 +175,34 @@
   box-shadow: 0 2px 6px rgba(95, 158, 160, 0.25);
 }
 
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 36px;
+  color: #333;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  z-index: 1050;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  color: #5EBFBD; /* Your teal brand color */
+}
+
+.close-btn span {
+  display: block;
+}
+
 /* ================================================
    MOBILE NAVBAR TOGGLER
    ================================================ */
@@ -404,5 +432,14 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+}
+
+
+
+/* Hide on desktop since it's mobile only */
+@media (min-width: 768px) {
+  .close-btn {
+    display: none !important;
   }
 }

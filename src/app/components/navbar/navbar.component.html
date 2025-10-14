@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg shadow-sm bg-white" (document:click)="onDocumentClick($event)">
   <div class="container">
     <!-- Logo (left) -->
@@ -14,15 +13,16 @@
           {{ cartItemCount$ | async }}
         </span>
       </a> -->
-      
+
       <a routerLink="/favorites" class="favorites-link " (click)="closeNavbar()">
         <i class="bi bi-heart"></i>
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" *ngIf="getFavoritesCount() > 0">
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+          *ngIf="getFavoritesCount() > 0">
           {{ getFavoritesCount() }}
         </span>
       </a>
       }
-      </div>
+    </div>
 
 
     <!-- Mobile Toggler - UPDATED THIS BUTTON -->
@@ -33,6 +33,9 @@
 
     <!-- Main Collapse Container - ADDED #navbarNav TEMPLATE REFERENCE -->
     <div class="collapse navbar-collapse" id="navbarNav" #navbarNav>
+      <button class="close-btn d-md-none" (click)="closeNavbar()" aria-label="Close menu" type="button">
+        <span>&times;</span>
+      </button>
       <!-- Full-width Flexbox Container -->
       <div class="d-flex justify-content-between align-items-center w-100">
         <!-- Center Nav Links - ADDED (click)="closeNavbar()" TO EACH LINK -->
@@ -56,43 +59,44 @@
           }
         </ul>
 
-       
-          
 
-          <div class="user-icons user-only">
-            @if (loggedIn) {
-            <!-- <a routerLink="/cart" class="cart-icon text-dark " (click)="closeNavbar()">
+
+
+        <div class="user-icons user-only">
+          @if (loggedIn) {
+          <!-- <a routerLink="/cart" class="cart-icon text-dark " (click)="closeNavbar()">
               <i class="bi bi-cart-fill"></i>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
                 *ngIf="(cartItemCount$ | async)! > 0">
                 {{ cartItemCount$ | async }}
               </span>
             </a> -->
-            
-            <a routerLink="/favorites" class="favorites-link " (click)="closeNavbar()">
-              <i class="bi bi-heart"></i>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" *ngIf="getFavoritesCount() > 0">
-                {{ getFavoritesCount() }}
-              </span>
-            </a>
-            }
-            </div>
 
-          <!-- Auth Buttons - NO CHANGES NEEDED, login() and logout() already call closeNavbar() -->
-          @if (!loggedIn) {
-          <button class="btn login-btn d-flex align-items-center gap-2 shadow-sm transition" (click)="login()">
-            <i class="bi bi-box-arrow-in-right"></i>
-            <span class="fw-medium">Login</span>
-          </button>
-          }
-          @if (loggedIn) {
-          <button class="btn login-btn d-flex align-items-center gap-2" (click)="logout()">
-            <i class="bi bi-box-arrow-right"></i>
-            <span class="fw-medium">Logout</span>
-          </button>
+          <a routerLink="/favorites" class="favorites-link " (click)="closeNavbar()">
+            <i class="bi bi-heart"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+              *ngIf="getFavoritesCount() > 0">
+              {{ getFavoritesCount() }}
+            </span>
+          </a>
           }
         </div>
+
+        <!-- Auth Buttons - NO CHANGES NEEDED, login() and logout() already call closeNavbar() -->
+        @if (!loggedIn) {
+        <button class="btn login-btn d-flex align-items-center gap-2 shadow-sm transition" (click)="login()">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span class="fw-medium">Login</span>
+        </button>
+        }
+        @if (loggedIn) {
+        <button class="btn login-btn d-flex align-items-center gap-2" (click)="logout()">
+          <i class="bi bi-box-arrow-right"></i>
+          <span class="fw-medium">Logout</span>
+        </button>
+        }
       </div>
     </div>
+  </div>
 
 </nav>
