@@ -161,7 +161,6 @@
   letter-spacing: 0.3px;
   box-shadow: 0 3px 8px rgba(95, 158, 160, 0.25);
   transition: all 0.3s ease;
-  margin-left: 1rem;
   white-space: nowrap;
 }
 
