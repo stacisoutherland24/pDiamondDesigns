@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-contact',
@@ -27,7 +28,7 @@ export class ContactComponent implements OnInit {
   private readonly EMAILJS_TEMPLATE_ID = 'template_co5qyic'; // e.g., 'template_xyz789'
   private readonly EMAILJS_PUBLIC_KEY = 'ZUPKV5diK_sUhR9bF'; // e.g., 'user_abcdef123456'
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private seoService: SeoService) {
     this.contactForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: [''],
@@ -39,6 +40,21 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
     // Initialize EmailJS with your public key
     emailjs.init(this.EMAILJS_PUBLIC_KEY);
+
+    // Update SEO meta tags
+    this.seoService.updateSeo({
+      title: 'Contact Us',
+      description: 'Contact P Diamond Designs for wholesale Native American and Southwestern jewelry inquiries. Get in touch with our team for product information, orders, and customer support.',
+      keywords: 'contact P Diamond Designs, wholesale jewelry inquiry, Native American jewelry contact, jewelry supplier contact, wholesale order inquiry',
+      url: 'https://pdiamonddesigns.com/contact',
+      type: 'website'
+    });
+
+    // Add breadcrumb schema
+    this.seoService.updateBreadcrumbSchema([
+      { name: 'Home', url: 'https://pdiamonddesigns.com/' },
+      { name: 'Contact', url: 'https://pdiamonddesigns.com/contact' }
+    ]);
   }
 
   get f() {

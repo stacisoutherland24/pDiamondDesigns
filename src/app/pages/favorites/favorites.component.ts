@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { AppState } from '../../store/app.state';
 import * as CartActions from '../../store/cart/cart.actions';
 import { selectCartTotalItems } from '../../store/cart/cart.selectors';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-favorites',
@@ -28,13 +29,23 @@ export class FavoritesComponent implements OnInit {
     private favoritesService: FavoritesService,
     private sanityService: SanityService,
     private router: Router,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private seoService: SeoService
   ) {
     // Initialize cart observables
     this.totalCartItems$ = this.store.select(selectCartTotalItems);
   }
 
   ngOnInit(): void {
+    // Update SEO meta tags
+    this.seoService.updateSeo({
+      title: 'My Favorites',
+      description: 'View and manage your favorite wholesale jewelry items from P Diamond Designs.',
+      url: 'https://pdiamonddesigns.com/favorites',
+      type: 'website',
+      robots: 'noindex, nofollow' // User-specific page
+    });
+
     this.loadFavoriteProducts();
 
     // Subscribe to favorites changes

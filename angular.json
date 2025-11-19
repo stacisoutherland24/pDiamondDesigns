@@ -22,8 +22,17 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/asserfavicon.",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "robots.txt",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "sitemap.xml",
+                "input": "src",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.css"
