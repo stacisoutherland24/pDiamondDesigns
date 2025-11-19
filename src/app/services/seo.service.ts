@@ -31,7 +31,7 @@ export interface ProductSchema {
 export class SeoService {
   private readonly siteName = 'P Diamond Designs';
   private readonly siteUrl = 'https://pdiamonddesigns.com';
-  private readonly defaultImage = 'https://pdiamonddesigns.com/assets/logo.png';
+  private readonly defaultImage = 'https://pdiamonddesigns.com/assets/logo.webp';
   private readonly twitterHandle = '@pdiamonddesigns';
 
   constructor(
