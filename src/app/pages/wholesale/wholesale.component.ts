@@ -14,7 +14,9 @@ import * as CartActions from '../../store/cart/cart.actions';
 import {
   selectCartItemById,
   selectCartTotalItems,
-} from '../../store/cart/cart.selectors'; 
+} from '../../store/cart/cart.selectors';
+import { SeoService } from '../../services/seo.service';
+
 @Component({
   selector: 'app-wholesale',
   standalone: true,
@@ -61,7 +63,8 @@ export class WholesaleComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private favoritesService: FavoritesService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private seoService: SeoService
   ) {
     // Initialize cart observables
     this.totalCartItems$ = this.store.select(selectCartTotalItems);
@@ -72,6 +75,22 @@ export class WholesaleComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Update SEO meta tags
+    this.seoService.updateSeo({
+      title: 'Wholesale Products',
+      description: 'Browse our wholesale collection of Native American and Southwestern jewelry. Rings, earrings, bracelets, Navajo pearls, pendants, and necklaces at wholesale prices.',
+      keywords: 'wholesale jewelry collection, Native American rings, turquoise earrings, sterling silver bracelets, Navajo pearls, southwestern pendants, wholesale necklaces',
+      url: 'https://pdiamonddesigns.com/wholesale',
+      type: 'website',
+      robots: 'noindex, nofollow' // Products require login
+    });
+
+    // Add breadcrumb schema
+    this.seoService.updateBreadcrumbSchema([
+      { name: 'Home', url: 'https://pdiamonddesigns.com/' },
+      { name: 'Wholesale Products', url: 'https://pdiamonddesigns.com/wholesale' }
+    ]);
+
     this.isAuthenticated = this.authService.isLoggedIn;
     this.authService.loggedIn$.subscribe((isLoggedIn) => {
       this.isAuthenticated = isLoggedIn;

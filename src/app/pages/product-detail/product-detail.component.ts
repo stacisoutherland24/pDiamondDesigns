@@ -8,12 +8,13 @@ import { map } from 'rxjs/operators';
 
 import { SanityService } from '../../services/sanity.service';
 import { FavoritesService } from '../../services/favorites.service';
-import { AppState } from '../../store/app.state'; 
+import { AppState } from '../../store/app.state';
 import * as CartActions from '../../store/cart/cart.actions';
 import {
   selectCartItemById,
   selectCartTotalItems,
-} from '../../store/cart/cart.selectors'; 
+} from '../../store/cart/cart.selectors';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -40,7 +41,8 @@ export class ProductDetailComponent implements OnInit {
     private router: Router,
     private sanityService: SanityService,
     private favoritesService: FavoritesService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private seoService: SeoService
   ) {
     // Initialize cart observables
     this.totalCartItems$ = this.store.select(selectCartTotalItems);
@@ -72,6 +74,8 @@ export class ProductDetailComponent implements OnInit {
           this.product = product;
           // Initialize cart observables after product is loaded
           this.initializeCartObservables();
+          // Update SEO for this specific product
+          this.updateProductSeo();
         } else {
           this.error = 'Product not found';
         }
@@ -82,6 +86,35 @@ export class ProductDetailComponent implements OnInit {
         this.error = 'Failed to load product. Please try again.';
         this.loading = false;
       },
+    });
+  }
+
+  private updateProductSeo(): void {
+    if (!this.product) return;
+
+    const productImage = this.product.images?.[0]?.asset?.url || 'https://pdiamonddesigns.com/assets/logo.png';
+    const productUrl = `https://pdiamonddesigns.com/product/${this.product._id}`;
+
+    // Update meta tags
+    this.seoService.updateSeo({
+      title: this.product.title,
+      description: this.product.description || `Shop ${this.product.title} - authentic handcrafted Native American jewelry from P Diamond Designs. Premium wholesale turquoise and sterling silver jewelry.`,
+      keywords: `${this.product.title}, ${this.product.type || 'jewelry'}, Native American jewelry, Southwestern jewelry, turquoise, sterling silver, wholesale jewelry`,
+      url: productUrl,
+      image: productImage,
+      type: 'product'
+    });
+
+    // Add product structured data
+    this.seoService.updateProductSchema({
+      name: this.product.title,
+      description: this.product.description || `Authentic handcrafted ${this.product.title} from P Diamond Designs`,
+      image: productImage,
+      price: this.product.price,
+      currency: 'USD',
+      availability: 'https://schema.org/InStock',
+      brand: 'P Diamond Designs',
+      sku: this.product._id
     });
   }
 

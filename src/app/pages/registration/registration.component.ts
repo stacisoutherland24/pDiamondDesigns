@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-registration',
@@ -105,7 +106,7 @@ export class RegistrationComponent implements OnInit {
     { value: 'other', name: 'Other' },
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private seoService: SeoService) {
     this.registrationForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
@@ -137,6 +138,21 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
     // Initialize EmailJS
     emailjs.init(this.EMAILJS_PUBLIC_KEY);
+
+    // Update SEO meta tags
+    this.seoService.updateSeo({
+      title: 'Wholesale Registration',
+      description: 'Register for a wholesale account with P Diamond Designs. Access exclusive wholesale pricing on Native American and Southwestern jewelry for your retail business.',
+      keywords: 'wholesale registration, jewelry wholesale account, become a retailer, wholesale jewelry pricing, jewelry reseller registration',
+      url: 'https://pdiamonddesigns.com/registration',
+      type: 'website'
+    });
+
+    // Add breadcrumb schema
+    this.seoService.updateBreadcrumbSchema([
+      { name: 'Home', url: 'https://pdiamonddesigns.com/' },
+      { name: 'Registration', url: 'https://pdiamonddesigns.com/registration' }
+    ]);
   }
 
   get f() {
