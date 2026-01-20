@@ -201,14 +201,24 @@ export class FavoritesComponent implements OnInit {
     let productList = '';
     let totalPrice = 0;
     let totalItems = 0;
-    let itemNumber = 0;
 
     this.favoriteProducts.forEach((product) => {
       if (this.removedFromOrder.has(product._id)) return;
-      itemNumber++;
       const quantity = this.productQuantities[product._id] || 1;
       const lineTotal = product.price * quantity;
-      productList += `${itemNumber}. ${product.title} - $${product.price} x ${quantity} = $${lineTotal.toFixed(2)}\n`;
+      const imageUrl = product.images?.[0]?.asset?.url || '';
+      const description = product.description || '';
+
+      productList += `
+        <div style="display: flex; gap: 16px; padding: 16px; margin-bottom: 12px; border: 1px solid #eee; border-radius: 8px; background: #fff;">
+          <img src="${imageUrl}" alt="${product.title}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 6px; margin-right: 5px;" />
+          <div style="flex: 1;">
+            <div style="font-weight: bold; color: #333; margin-bottom: 6px;">${product.title}</div>
+            ${description ? `<div style="font-size: 12px; color: #666; margin-bottom: 6px;">${description}</div>` : ''}
+            <div style="font-size: 13px; color: #333;">$${product.price} x ${quantity} = <strong>$${lineTotal.toFixed(2)}</strong></div>
+          </div>
+        </div>`;
+
       totalPrice += lineTotal;
       totalItems += quantity;
     });
@@ -228,8 +238,8 @@ export class FavoritesComponent implements OnInit {
 
     // Confirmation email to customer
     const customerEmailParams = {
-      from_name: 'P Diamond Designs',
-      from_email: 'kerry@pdiamonddesigns.com',
+      from_name: this.customerName,
+      from_email: this.customerEmail,
       to_email: this.customerEmail,
       reply_to: 'kerry@pdiamonddesigns.com',
       subject: `Order Confirmation - P Diamond Designs`,

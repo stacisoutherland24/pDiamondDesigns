@@ -29,7 +29,7 @@
                <!-- Product Information -->
                <div class="product-info" (click)="navigateToProduct(product._id)">
                     <h3>{{ product.title }}</h3>
-                    <!-- <span>{{product.description}}</span> -->
+                    <p class="product-description">{{ product.description || 'No description available.' }}</p>
                     <span class="price">${{ product.price }}</span>
                </div>
 
@@ -104,8 +104,13 @@
                                    <button type="button" class="remove-item-btn" (click)="removeFromOrder(product._id)" title="Remove from order">
                                         <i class="bi bi-x"></i>
                                    </button>
+                                   <div class="item-image">
+                                        <img [src]="product.images?.[0]?.asset?.url" [alt]="product.title"
+                                             onerror="this.src='assets/placeholder-image.jpg'" />
+                                   </div>
                                    <div class="item-details">
                                         <span class="item-name">{{ product.title }}</span>
+                                        <span class="item-description" *ngIf="product.description">{{ product.description }}</span>
                                         <span class="item-price">${{ product.price }}</span>
                                    </div>
                                    <div class="quantity-controls">
@@ -121,7 +126,9 @@
                          </ng-container>
                     </ul>
                     <div class="order-total">
-                         <strong>Total: ${{ getOrderTotal().toFixed(2) }}</strong>
+                         <strong>Total estimated cost: ${{ getOrderTotal().toFixed(2) }}</strong>
+                         <p class="text-left">Disclaimer - Price on products are subject to change due to the rising market costs of product materials. Please
+                              contact <a href="mailto:kerry&#64;pdiamonddesigns.com">kerry&#64;pdiamonddesigns.com</a> for final invoice cost.</p>
                     </div>
                </div>
 
