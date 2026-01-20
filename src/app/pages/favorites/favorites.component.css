@@ -46,8 +46,9 @@
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 2px;
 }
 
 .email-order-btn:hover {
@@ -57,6 +58,18 @@
 
 .email-order-btn i {
   font-size: 16px;
+}
+
+.email-order-btn .btn-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.email-order-btn .btn-subtext {
+  font-size: 11px;
+  font-weight: normal;
+  opacity: 0.85;
 }
 
 .clear-all-btn {
@@ -355,10 +368,11 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  z-index: 1000;
-  padding: 20px;
+  z-index: 1100;
+  padding: 40px 20px;
+  overflow-y: auto;
 }
 
 /* Email Modal */
@@ -368,10 +382,9 @@
   padding: 30px;
   max-width: 500px;
   width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
   position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  margin: auto 0;
 }
 
 .email-modal h2 {
@@ -461,12 +474,145 @@
 .order-summary li {
   font-size: 14px;
   color: #666;
-  padding: 5px 0;
+  padding: 8px 0;
   border-bottom: 1px solid #eee;
 }
 
 .order-summary li:last-child {
   border-bottom: none;
+}
+
+/* Order Item Layout */
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.remove-item-btn {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+  flex-shrink: 0;
+  order: -1;
+}
+
+.remove-item-btn:hover {
+  background: #dc3545;
+  border-color: #dc3545;
+}
+
+.remove-item-btn i {
+  font-size: 16px;
+  color: #999;
+  line-height: 1;
+}
+
+.remove-item-btn:hover i {
+  color: white;
+}
+
+.item-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-name {
+  display: block;
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-price {
+  font-size: 13px;
+  color: #666;
+}
+
+/* Quantity Controls */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.qty-btn:hover:not(:disabled) {
+  background: #f0f0f0;
+  border-color: #ccc;
+}
+
+.qty-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.qty-btn i {
+  font-size: 12px;
+  color: #333;
+}
+
+.qty-input {
+  width: 45px;
+  height: 28px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 0 4px;
+}
+
+.qty-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Hide number input spinners */
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.qty-input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Order Total */
+.order-total {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 2px solid #ddd;
+  text-align: right;
+  font-size: 16px;
+  color: #333;
 }
 
 /* Send Button */
@@ -582,7 +728,36 @@
 
   .order-summary li {
     font-size: 13px;
-    padding: 6px 0;
+    padding: 8px 0;
+  }
+
+  .order-item {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .item-details {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .quantity-controls {
+    flex-shrink: 0;
+  }
+
+  .remove-item-btn {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    min-height: 26px;
+  }
+
+  .remove-item-btn i {
+    font-size: 14px;
+  }
+
+  .order-total {
+    font-size: 15px;
   }
 
   .send-email-btn {
@@ -667,7 +842,33 @@
 
   .order-summary li {
     font-size: 12px;
-    padding: 5px 0;
+    padding: 8px 0;
+  }
+
+  .remove-item-btn {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+  }
+
+  .remove-item-btn i {
+    font-size: 12px;
+  }
+
+  .qty-btn {
+    width: 26px;
+    height: 26px;
+  }
+
+  .qty-input {
+    width: 40px;
+    height: 26px;
+    font-size: 13px;
+  }
+
+  .order-total {
+    font-size: 14px;
   }
 
   .send-email-btn {

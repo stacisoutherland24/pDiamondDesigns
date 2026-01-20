@@ -36,6 +36,10 @@ export class FavoritesComponent implements OnInit {
   emailSuccess = false;
   emailError = false;
 
+  // Product quantities for order
+  productQuantities: { [productId: string]: number } = {};
+  removedFromOrder: Set<string> = new Set();
+
   constructor(
     private favoritesService: FavoritesService,
     private sanityService: SanityService,
@@ -131,6 +135,12 @@ export class FavoritesComponent implements OnInit {
     if (this.favoriteProducts.length === 0) {
       return;
     }
+    // Initialize quantities to 1 for each product
+    this.favoriteProducts.forEach((product) => {
+      if (!this.productQuantities[product._id]) {
+        this.productQuantities[product._id] = 1;
+      }
+    });
     this.showEmailForm = true;
     this.emailSuccess = false;
     this.emailError = false;
@@ -141,6 +151,41 @@ export class FavoritesComponent implements OnInit {
     this.customerName = '';
     this.customerEmail = '';
     this.customerMessage = '';
+    this.productQuantities = {};
+    this.removedFromOrder.clear();
+  }
+
+  updateQuantity(productId: string, quantity: number): void {
+    if (quantity >= 1) {
+      this.productQuantities[productId] = quantity;
+    }
+  }
+
+  getQuantity(productId: string): number {
+    return this.productQuantities[productId] || 1;
+  }
+
+  getOrderTotal(): number {
+    return this.favoriteProducts.reduce((total, product) => {
+      if (this.removedFromOrder.has(product._id)) return total;
+      const quantity = this.productQuantities[product._id] || 1;
+      return total + product.price * quantity;
+    }, 0);
+  }
+
+  getTotalItems(): number {
+    return this.favoriteProducts.reduce((total, product) => {
+      if (this.removedFromOrder.has(product._id)) return total;
+      return total + (this.productQuantities[product._id] || 1);
+    }, 0);
+  }
+
+  removeFromOrder(productId: string): void {
+    this.removedFromOrder.add(productId);
+  }
+
+  isRemovedFromOrder(productId: string): boolean {
+    return this.removedFromOrder.has(productId);
   }
 
   sendEmailOrder(): void {
@@ -152,33 +197,58 @@ export class FavoritesComponent implements OnInit {
     this.emailSuccess = false;
     this.emailError = false;
 
-    // Build the product list for the email
+    // Build the product list for the email with quantities (excluding removed items)
     let productList = '';
     let totalPrice = 0;
+    let totalItems = 0;
+    let itemNumber = 0;
 
-    this.favoriteProducts.forEach((product, index) => {
-      productList += `${index + 1}. ${product.title} - $${product.price}\n`;
-      totalPrice += product.price;
+    this.favoriteProducts.forEach((product) => {
+      if (this.removedFromOrder.has(product._id)) return;
+      itemNumber++;
+      const quantity = this.productQuantities[product._id] || 1;
+      const lineTotal = product.price * quantity;
+      productList += `${itemNumber}. ${product.title} - $${product.price} x ${quantity} = $${lineTotal.toFixed(2)}\n`;
+      totalPrice += lineTotal;
+      totalItems += quantity;
     });
 
-    const templateParams = {
+    // Email to P Diamond (Kerry and Staci)
+    const businessEmailParams = {
       from_name: this.customerName,
       from_email: this.customerEmail,
-      to_email: 'stacisoutherland24@gmail.com',
+      to_email: 'stacisoutherland24@gmail.com, kerry@pdiamonddesigns.com',
       reply_to: this.customerEmail,
       subject: `Wholesale Order from ${this.customerName}`,
       product_list: productList,
-      product_count: this.favoriteProducts.length,
+      product_count: totalItems,
       total_price: totalPrice.toFixed(2),
       message: this.customerMessage || 'No additional message provided.',
     };
 
-    // EmailJS credentials - you'll need to create a new template for orders
+    // Confirmation email to customer
+    const customerEmailParams = {
+      from_name: 'P Diamond Designs',
+      from_email: 'kerry@pdiamonddesigns.com',
+      to_email: this.customerEmail,
+      reply_to: 'kerry@pdiamonddesigns.com',
+      subject: `Order Confirmation - P Diamond Designs`,
+      product_list: productList,
+      product_count: totalItems,
+      total_price: totalPrice.toFixed(2),
+      message: `Thank you for your order, ${this.customerName}! Your wholesale order has been sent to Kerry at P Diamond Designs. We will review your order and get back to you soon.\n\nYour additional message: ${this.customerMessage || 'None'}`,
+    };
+
+    // EmailJS credentials
     const serviceId = 'service_flyublo';
-    const templateId = 'template_order'; // Create this template in EmailJS dashboard
+    const templateId = 'template_order';
     const publicKey = 'ZUPKV5diK_sUhR9bF';
 
-    emailjs.send(serviceId, templateId, templateParams, publicKey).then(
+    // Send both emails
+    Promise.all([
+      emailjs.send(serviceId, templateId, businessEmailParams, publicKey),
+      emailjs.send(serviceId, templateId, customerEmailParams, publicKey),
+    ]).then(
       () => {
         this.emailSending = false;
         this.emailSuccess = true;

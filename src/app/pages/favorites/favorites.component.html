@@ -3,7 +3,8 @@
           <h1>My Favorites</h1>
           <div class="header-actions" *ngIf="favoriteProducts.length > 0">
                <button class="email-order-btn" (click)="openEmailForm()">
-                    <i class="bi bi-envelope"></i> Email This Order
+                    <span class="btn-main"><i class="bi bi-envelope"></i> Email This Order</span>
+                    <span class="btn-subtext">Add quantities in next step</span>
                </button>
                <button class="clear-all-btn" (click)="clearAllFavorites()">
                     Clear All Favorites
@@ -96,12 +97,32 @@
 
                <!-- Order Summary -->
                <div class="order-summary">
-                    <h3>Items in this order ({{ favoriteProducts.length }})</h3>
+                    <h3>Items in this order ({{ getTotalItems() }} items)</h3>
                     <ul>
-                         <li *ngFor="let product of favoriteProducts">
-                              {{ product.title }} - ${{ product.price }}
-                         </li>
+                         <ng-container *ngFor="let product of favoriteProducts">
+                              <li class="order-item" *ngIf="!isRemovedFromOrder(product._id)">
+                                   <button type="button" class="remove-item-btn" (click)="removeFromOrder(product._id)" title="Remove from order">
+                                        <i class="bi bi-x"></i>
+                                   </button>
+                                   <div class="item-details">
+                                        <span class="item-name">{{ product.title }}</span>
+                                        <span class="item-price">${{ product.price }}</span>
+                                   </div>
+                                   <div class="quantity-controls">
+                                        <button type="button" class="qty-btn" (click)="updateQuantity(product._id, getQuantity(product._id) - 1)" [disabled]="getQuantity(product._id) <= 1">
+                                             <i class="bi bi-dash"></i>
+                                        </button>
+                                        <input type="number" [value]="getQuantity(product._id)" (change)="updateQuantity(product._id, $any($event.target).value)" min="1" class="qty-input" />
+                                        <button type="button" class="qty-btn" (click)="updateQuantity(product._id, getQuantity(product._id) + 1)">
+                                             <i class="bi bi-plus"></i>
+                                        </button>
+                                   </div>
+                              </li>
+                         </ng-container>
                     </ul>
+                    <div class="order-total">
+                         <strong>Total: ${{ getOrderTotal().toFixed(2) }}</strong>
+                    </div>
                </div>
 
                <button type="submit" class="send-email-btn" [disabled]="emailSending || !customerName || !customerEmail">
