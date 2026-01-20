@@ -21,6 +21,54 @@
   font-family: 'Playfair Display', serif;
 }
 
+/* How to Order Instructions */
+.order-instructions {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 20px 25px;
+  margin-bottom: 30px;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.order-instructions h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.order-instructions h3 i {
+  color: #007bff;
+}
+
+.order-instructions ol,
+.order-instructions ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.order-instructions li {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.order-instructions li:last-child {
+  margin-bottom: 0;
+}
+
+.order-instructions li i {
+  vertical-align: middle;
+}
+
 /* Category Navigation */
 .category-navigation {
   display: flex;

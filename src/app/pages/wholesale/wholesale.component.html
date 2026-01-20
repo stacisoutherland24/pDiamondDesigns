@@ -42,6 +42,17 @@
      <div class="header-section">
           <h1 class="main-title">P Diamond Designs</h1>
 
+          <!-- How to Order Instructions -->
+          <div class="order-instructions">
+               <h3><i class="bi bi-info-circle"></i> How to Place an Order</h3>
+               <ol>
+                    <li>Browse our catalog and click the <i class="bi bi-heart"></i> heart icon on items you'd like to order</li>
+                    <li>When you're done shopping, click the <i class="bi bi-heart-fill text-danger"></i> favorites icon in the top navigation</li>
+                    <li>Review your selections and click "Email This Order" to submit your order with quantities</li>
+               </ol>
+          </div>
+         
+
           <!-- Category Navigation -->
           <div class="category-navigation">
                <a *ngFor="let cat of categories" href="#" (click)="filterByCategory(cat.value); $event.preventDefault()"

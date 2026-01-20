@@ -178,10 +178,22 @@
 .product-info h3 {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: #333;
   transition: color 0.2s ease;
   line-height: 1.3;
+}
+
+.product-info .product-description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .product-info .price {
@@ -380,7 +392,7 @@
   background: white;
   border-radius: 12px;
   padding: 30px;
-  max-width: 500px;
+  max-width: 700px;
   width: 100%;
   position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
@@ -467,7 +479,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 150px;
+  max-height: 300px;
   overflow-y: auto;
 }
 
@@ -488,6 +500,22 @@
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+}
+
+/* Item Image Thumbnail */
+.item-image {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .remove-item-btn {
@@ -537,6 +565,16 @@
   text-overflow: ellipsis;
 }
 
+.item-description {
+  display: block;
+  font-size: 11px;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
 .item-price {
   font-size: 13px;
   color: #666;
@@ -546,15 +584,16 @@
 .quantity-controls {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 1px;
+  flex-shrink: 0;
 }
 
 .qty-btn {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border: 1px solid #ddd;
   background: white;
-  border-radius: 4px;
+  border-radius: 3px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -578,14 +617,14 @@
   color: #333;
 }
 
-.qty-input {
-  width: 45px;
-  height: 28px;
+.quantity-controls .qty-input {
+  width: 32px !important;
+  height: 24px !important;
   text-align: center;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-  padding: 0 4px;
+  border-radius: 3px;
+  font-size: 12px;
+  padding: 0 2px;
 }
 
 .qty-input:focus {
@@ -613,6 +652,14 @@
   text-align: right;
   font-size: 16px;
   color: #333;
+}
+
+.order-total p {
+  text-align: left;
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+  line-height: 1.5;
 }
 
 /* Send Button */
@@ -756,6 +803,16 @@
     font-size: 14px;
   }
 
+  .item-image {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+  }
+
+  .item-description {
+    font-size: 10px;
+  }
+
   .order-total {
     font-size: 15px;
   }
@@ -856,15 +913,29 @@
     font-size: 12px;
   }
 
-  .qty-btn {
-    width: 26px;
-    height: 26px;
+  .item-image {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
   }
 
-  .qty-input {
-    width: 40px;
-    height: 26px;
-    font-size: 13px;
+  .item-description {
+    font-size: 9px;
+  }
+
+  .qty-btn {
+    width: 20px;
+    height: 20px;
+  }
+
+  .qty-btn i {
+    font-size: 10px;
+  }
+
+  .quantity-controls .qty-input {
+    width: 28px !important;
+    height: 20px !important;
+    font-size: 10px;
   }
 
   .order-total {
