@@ -1,9 +1,14 @@
 <div class="favorites-container">
      <div class="favorites-header">
           <h1>My Favorites</h1>
-          <button *ngIf="favoriteProducts.length > 0" class="clear-all-btn" (click)="clearAllFavorites()">
-               Clear All Favorites
-          </button>
+          <div class="header-actions" *ngIf="favoriteProducts.length > 0">
+               <button class="email-order-btn" (click)="openEmailForm()">
+                    <i class="bi bi-envelope"></i> Email This Order
+               </button>
+               <button class="clear-all-btn" (click)="clearAllFavorites()">
+                    Clear All Favorites
+               </button>
+          </div>
      </div>
 
      <div class="favorites-grid" *ngIf="favoriteProducts.length > 0">
@@ -45,5 +50,68 @@
 
      <div class="loading" *ngIf="loading">
           Loading your favorites...
+     </div>
+</div>
+
+<!-- Email Order Modal -->
+<div class="email-modal-overlay" *ngIf="showEmailForm" (click)="closeEmailForm()">
+     <div class="email-modal" (click)="$event.stopPropagation()">
+          <button class="close-modal-btn" (click)="closeEmailForm()">
+               <i class="bi bi-x-lg"></i>
+          </button>
+
+          <h2>Send Wholesale Order</h2>
+
+          <!-- Success Message -->
+          <div class="email-success" *ngIf="emailSuccess">
+               <i class="bi bi-check-circle"></i>
+               <p>Your wholesale order has been sent successfully!</p>
+          </div>
+
+          <!-- Error Message -->
+          <div class="email-error" *ngIf="emailError">
+               <i class="bi bi-exclamation-circle"></i>
+               <p>Failed to send email. Please try again.</p>
+          </div>
+
+          <!-- Email Form -->
+          <form *ngIf="!emailSuccess" (ngSubmit)="sendEmailOrder()">
+               <div class="form-group">
+                    <label for="customerName">Your Name *</label>
+                    <input type="text" id="customerName" [(ngModel)]="customerName" name="customerName" required
+                         placeholder="Enter your name" />
+               </div>
+
+               <div class="form-group">
+                    <label for="customerEmail">Your Email *</label>
+                    <input type="email" id="customerEmail" [(ngModel)]="customerEmail" name="customerEmail" required
+                         placeholder="Enter your email" />
+               </div>
+
+               <div class="form-group">
+                    <label for="customerMessage">Additional Message (Optional)</label>
+                    <textarea id="customerMessage" [(ngModel)]="customerMessage" name="customerMessage" rows="3"
+                         placeholder="Any special requests or questions?"></textarea>
+               </div>
+
+               <!-- Order Summary -->
+               <div class="order-summary">
+                    <h3>Items in this order ({{ favoriteProducts.length }})</h3>
+                    <ul>
+                         <li *ngFor="let product of favoriteProducts">
+                              {{ product.title }} - ${{ product.price }}
+                         </li>
+                    </ul>
+               </div>
+
+               <button type="submit" class="send-email-btn" [disabled]="emailSending || !customerName || !customerEmail">
+                    <span *ngIf="!emailSending">
+                         <i class="bi bi-send"></i> Send Order
+                    </span>
+                    <span *ngIf="emailSending">
+                         <i class="bi bi-hourglass-split"></i> Sending...
+                    </span>
+               </button>
+          </form>
      </div>
 </div>

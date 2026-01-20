@@ -27,6 +27,38 @@
   margin-bottom: 20px;
 }
 
+.header-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.email-order-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.email-order-btn:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+.email-order-btn i {
+  font-size: 16px;
+}
+
 .clear-all-btn {
   background: #333;
   color: white;
@@ -37,7 +69,6 @@
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-bottom: 20px;
 }
 
 .clear-all-btn:hover {
@@ -273,31 +304,418 @@
     grid-template-columns: 1fr;
     justify-items: center;
   }
-  
+
   .favorite-item {
     width: 280px;
     height: 420px;
   }
-  
+
   .product-image {
     height: 280px;
   }
-  
+
   .favorites-header h1 {
     font-size: 28px;
   }
-  
+
+  .header-actions {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .email-order-btn,
+  .clear-all-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+
   .empty-favorites {
     padding: 40px 15px;
   }
-  
+
   .empty-favorites i {
     font-size: 48px;
   }
-  
+
   .empty-favorites h3 {
     font-size: 20px;
   }
+}
 
+/* Email Modal Overlay */
+.email-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* Email Modal */
+.email-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.email-modal h2 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 25px;
+  color: #333;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.close-modal-btn:hover {
+  color: #333;
+}
+
+/* Form Styles */
+.email-modal .form-group {
+  margin-bottom: 20px;
+}
+
+.email-modal label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.email-modal input,
+.email-modal textarea {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.email-modal input:focus,
+.email-modal textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.email-modal textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Order Summary */
+.order-summary {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.order-summary h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.order-summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.order-summary li {
+  font-size: 14px;
+  color: #666;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.order-summary li:last-child {
+  border-bottom: none;
+}
+
+/* Send Button */
+.send-email-btn {
+  width: 100%;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.send-email-btn:hover:not(:disabled) {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+.send-email-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Success/Error Messages */
+.email-success,
+.email-error {
+  text-align: center;
+  padding: 30px;
+}
+
+.email-success i,
+.email-error i {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.email-success i {
+  color: #28a745;
+}
+
+.email-error i {
+  color: #dc3545;
+}
+
+.email-success p,
+.email-error p {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Responsive Modal - Tablet */
+@media (max-width: 768px) {
+  .email-modal-overlay {
+    padding: 15px;
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+
+  .email-modal {
+    padding: 25px;
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: 10px;
+  }
+
+  .email-modal h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding-right: 30px;
+  }
+
+  .close-modal-btn {
+    top: 12px;
+    right: 12px;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    border-radius: 50%;
+  }
+
+  .email-modal .form-group {
+    margin-bottom: 16px;
+  }
+
+  .email-modal input,
+  .email-modal textarea {
+    padding: 14px 12px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .order-summary {
+    padding: 12px;
+  }
+
+  .order-summary h3 {
+    font-size: 15px;
+  }
+
+  .order-summary ul {
+    max-height: 120px;
+  }
+
+  .order-summary li {
+    font-size: 13px;
+    padding: 6px 0;
+  }
+
+  .send-email-btn {
+    padding: 16px 20px;
+    font-size: 16px;
+  }
+
+  .email-success,
+  .email-error {
+    padding: 25px 15px;
+  }
+
+  .email-success i,
+  .email-error i {
+    font-size: 42px;
+  }
+}
+
+/* Responsive Modal - Mobile */
+@media (max-width: 480px) {
+  .email-modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .email-modal {
+    padding: 20px;
+    padding-bottom: 30px;
+    margin: 0;
+    max-height: 90vh;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+  }
+
+  .email-modal h2 {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .close-modal-btn {
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .email-modal label {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .email-modal .form-group {
+    margin-bottom: 14px;
+  }
+
+  .email-modal input,
+  .email-modal textarea {
+    padding: 12px 10px;
+    font-size: 16px; /* Prevents zoom on iOS */
+    border-radius: 8px;
+  }
+
+  .email-modal textarea {
+    min-height: 70px;
+  }
+
+  .order-summary {
+    padding: 10px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+  }
+
+  .order-summary h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .order-summary ul {
+    max-height: 100px;
+  }
+
+  .order-summary li {
+    font-size: 12px;
+    padding: 5px 0;
+  }
+
+  .send-email-btn {
+    padding: 14px 16px;
+    font-size: 15px;
+    border-radius: 8px;
+  }
+
+  .email-success,
+  .email-error {
+    padding: 20px 10px;
+  }
+
+  .email-success i,
+  .email-error i {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .email-success p,
+  .email-error p {
+    font-size: 14px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .email-modal {
+    padding: 15px;
+    padding-bottom: 25px;
+  }
+
+  .email-modal h2 {
+    font-size: 20px;
+  }
+
+  .email-modal input,
+  .email-modal textarea {
+    padding: 10px 8px;
+  }
+
+  .order-summary ul {
+    max-height: 80px;
+  }
+
+  .send-email-btn {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
 }
 

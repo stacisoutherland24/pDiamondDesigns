@@ -10,11 +10,13 @@ import { AppState } from '../../store/app.state';
 import * as CartActions from '../../store/cart/cart.actions';
 import { selectCartTotalItems } from '../../store/cart/cart.selectors';
 import { SeoService } from '../../services/seo.service';
+import emailjs from '@emailjs/browser';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-favorites',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.css'],
 })
@@ -24,6 +26,15 @@ export class FavoritesComponent implements OnInit {
 
   // NgRx observables
   totalCartItems$: Observable<number>;
+
+  // Email order properties
+  showEmailForm = false;
+  customerName = '';
+  customerEmail = '';
+  customerMessage = '';
+  emailSending = false;
+  emailSuccess = false;
+  emailError = false;
 
   constructor(
     private favoritesService: FavoritesService,
@@ -40,10 +51,11 @@ export class FavoritesComponent implements OnInit {
     // Update SEO meta tags
     this.seoService.updateSeo({
       title: 'My Favorites',
-      description: 'View and manage your favorite wholesale jewelry items from P Diamond Designs.',
+      description:
+        'View and manage your favorite wholesale jewelry items from P Diamond Designs.',
       url: 'https://pdiamonddesigns.com/favorites',
       type: 'website',
-      robots: 'noindex, nofollow' // User-specific page
+      robots: 'noindex, nofollow', // User-specific page
     });
 
     this.loadFavoriteProducts();
@@ -113,5 +125,78 @@ export class FavoritesComponent implements OnInit {
   // Optional: Navigate to cart
   goToCart(): void {
     this.router.navigate(['/cart']);
+  }
+
+  openEmailForm(): void {
+    if (this.favoriteProducts.length === 0) {
+      return;
+    }
+    this.showEmailForm = true;
+    this.emailSuccess = false;
+    this.emailError = false;
+  }
+
+  closeEmailForm(): void {
+    this.showEmailForm = false;
+    this.customerName = '';
+    this.customerEmail = '';
+    this.customerMessage = '';
+  }
+
+  sendEmailOrder(): void {
+    if (!this.customerName || !this.customerEmail) {
+      return;
+    }
+
+    this.emailSending = true;
+    this.emailSuccess = false;
+    this.emailError = false;
+
+    // Build the product list for the email
+    let productList = '';
+    let totalPrice = 0;
+
+    this.favoriteProducts.forEach((product, index) => {
+      productList += `${index + 1}. ${product.title} - $${product.price}\n`;
+      totalPrice += product.price;
+    });
+
+    const templateParams = {
+      from_name: this.customerName,
+      from_email: this.customerEmail,
+      to_email: 'stacisoutherland24@gmail.com',
+      reply_to: this.customerEmail,
+      subject: `Wholesale Order from ${this.customerName}`,
+      product_list: productList,
+      product_count: this.favoriteProducts.length,
+      total_price: totalPrice.toFixed(2),
+      message: this.customerMessage || 'No additional message provided.',
+    };
+
+    // EmailJS credentials - you'll need to create a new template for orders
+    const serviceId = 'service_flyublo';
+    const templateId = 'template_order'; // Create this template in EmailJS dashboard
+    const publicKey = 'ZUPKV5diK_sUhR9bF';
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey).then(
+      () => {
+        this.emailSending = false;
+        this.emailSuccess = true;
+        this.customerName = '';
+        this.customerEmail = '';
+        this.customerMessage = '';
+
+        // Auto-close after 3 seconds
+        setTimeout(() => {
+          this.showEmailForm = false;
+          this.emailSuccess = false;
+        }, 3000);
+      },
+      (error) => {
+        console.error('EmailJS error:', error);
+        this.emailSending = false;
+        this.emailError = true;
+      }
+    );
   }
 }
