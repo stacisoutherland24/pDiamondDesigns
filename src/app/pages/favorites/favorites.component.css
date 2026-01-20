@@ -355,10 +355,11 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  z-index: 1000;
-  padding: 20px;
+  z-index: 1100;
+  padding: 40px 20px;
+  overflow-y: auto;
 }
 
 /* Email Modal */
@@ -368,10 +369,9 @@
   padding: 30px;
   max-width: 500px;
   width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
   position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  margin: auto 0;
 }
 
 .email-modal h2 {
