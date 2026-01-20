@@ -1,4 +1,46 @@
 /* ================================================
+   ANNOUNCEMENT BANNER
+   ================================================ */
+
+.announcement-banner {
+  background: linear-gradient(135deg, #5F9EA0 0%, #20B2AA 100%);
+  color: white;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1031;
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+
+.banner-content {
+  display: flex;
+  animation: scrollBanner 20s linear infinite;
+  white-space: nowrap;
+}
+
+.banner-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 0 50px;
+  text-transform: uppercase;
+}
+
+@keyframes scrollBanner {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ================================================
    NAVBAR BASE STYLES
    ================================================ */
 
@@ -10,7 +52,7 @@
   display: flex;
   align-items: center;
   position: fixed;
-  top: 0;
+  top: 35px; /* Account for announcement banner */
   left: 0;
   right: 0;
   z-index: 1030;
@@ -301,6 +343,19 @@
    ================================================ */
 
 @media (max-width: 991.98px) {
+  .announcement-banner {
+    height: 30px;
+  }
+
+  .banner-text {
+    font-size: 0.75rem;
+    padding: 0 30px;
+  }
+
+  .navbar {
+    top: 30px; /* Account for smaller mobile banner */
+  }
+
   .mobile-user-icons {
     display: flex;
     align-items: center;
