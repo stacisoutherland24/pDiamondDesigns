@@ -17,6 +17,7 @@
           <section class="hero-section">
                <img src="assets/mountains.webp" alt="Southwestern mountain landscape representing Native American jewelry heritage" class="hero-image desktop-hero">
                <img src="assets/girlImage5.webp" alt="Western style model wearing P Diamond Designs jewelry" class="hero-image mobile-hero">
+               <div class="hero-image-overlay"></div>
           </section>
           
                <!-- Optional: Add overlay text on the image -->
@@ -84,11 +85,52 @@
           </div> -->
           <section class="girl-section">
                <img src="assets/girlImage3.webp" alt="Western Girl" class="girl-image">
+               <div class="girl-overlay"></div>
           </section>
           <br>
 
-         
-<!-- 
+          <!-- Showroom Photo Carousel -->
+          <section class="showroom-carousel-section" animateOnScroll>
+               <h2 class="green-title">Our Showroom</h2>
+               <p class="showroom-carousel-subtitle">Step inside our beautiful showroom</p>
+
+               <div class="carousel-container" (mouseenter)="pauseAutoPlay()" (mouseleave)="resumeAutoPlay()">
+                    <button class="carousel-btn carousel-btn-prev" (click)="prevSlide()">
+                         <span>‹</span>
+                    </button>
+
+                    <div class="carousel-viewport">
+                         <div class="carousel-track"
+                              [class.no-transition]="!isTransitioning"
+                              [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
+                              <div class="carousel-slide" *ngFor="let photo of showroomPhotos; let i = index">
+                                   <img [src]="photo.src" [alt]="photo.alt" class="carousel-image">
+                                   <div class="carousel-overlay"></div>
+                                   <div class="carousel-logo">
+                                        <img src="assets/logo+w_transparent+background.png" alt="P Diamond Designs" class="logo-image">
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+                    <button class="carousel-btn carousel-btn-next" (click)="nextSlide()">
+                         <span>›</span>
+                    </button>
+               </div>
+
+               <div class="carousel-indicators">
+                    <button
+                         *ngFor="let photo of originalPhotos; let i = index"
+                         class="carousel-indicator"
+                         [class.active]="i === getIndicatorIndex()"
+                         (click)="goToSlide(i)">
+                    </button>
+               </div>
+          </section>
+          <br><br>
+
+
+<!--
           <div class="showroom-section">
                <div class="green-title">Showroom Info</div>
                <a href="https://www.dallasmarketcenter.com" target="_blank" rel="noopener noreferrer">
